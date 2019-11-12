@@ -1,0 +1,52 @@
+.theme-wrapper,
+.sidenav-container {
+    height: 100%;
+    width: 100%;
+}
+
+.sidenav {
+    width: 200px;
+}
+
+.sidenav__branding {
+    width: 100%;
+    text-align: center;
+    padding-top: 1em;
+}
+
+.sidenav__logo {
+    font-size: 108px;
+    height: 108px;
+    width: 108px;
+}
+
+.view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    display: flex;
+    height: 64px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+.content {
+    flex: 1 0 auto;
+    margin-top: 64px;
+    overflow: hidden;
+}
+
+.footer {
+    flex: 0 0 auto;
+    padding: 0 15px;
+    text-align: center;
+}

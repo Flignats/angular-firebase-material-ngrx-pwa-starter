@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+$toolbar-breakpoint: 600px;
+
+$grid-breakpoints: (
+    phone: 599px,
+    tablet: 600px,
+    tablet-landscape: 900px,
+    desktop: 1200px,
+    desktop-lg: 1920px
+);
+
+$colors-success: mat-palette($mat-green, 400);
+$colors-warning: mat-palette($mat-amber, 400);
