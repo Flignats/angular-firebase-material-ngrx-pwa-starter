@@ -8,14 +8,14 @@ export const environment = {
     production: false,
     i18nPrefix: '',
     firebase: {
-        apiKey: 'AIzaSyD5QsoEnK76ANkevikcgOblgC9Kmmo5AdM',
-        authDomain: 'afmnps.firebaseapp.com',
-        databaseURL: 'https://afmnps.firebaseio.com',
-        projectId: 'afmnps',
-        storageBucket: 'afmnps.appspot.com',
-        messagingSenderId: '1027550542547',
-        appId: '1:1027550542547:web:1a641215253b9043c97226',
-        measurementId: 'G-FDWK81FY9Z'
+        apiKey: 'xxxxxxxxxxxxx',                                   // Insert your API  key here
+        authDomain: 'xxxxx.firebaseapp.com',                       // Update to your domain
+        databaseURL: 'https://xxxxx.firebaseio.com',               // Update your db url
+        projectId: 'xxxxx',                                        // Update to your project id
+        storageBucket: 'xxxxx.appspot.com',                        // Update to your app storeage bucket
+        messagingSenderId: 'xxxxxxxxxxxx',                         // Update to your app's messagingId
+        appId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',        // Update to your app's id
+        measurementId: 'xxxxxxxxxxx'                               // Update to your app's measurementId
     }
 };
 
