@@ -11,7 +11,7 @@
     </p>
     <div>
         <button mat-button *ngIf="!passwordResetSuccess" [disabled]="isResetPasswordDisabled()"
-            (click)="onResetPassword()">Reset Password</button>
+            (click)="onResetPassword()">{{ 'auth.resetPassword' | translate }}</button>
         <p *ngIf="passwordResetSuccess">Password reset email sent.</p>
     </div>
 </form>

@@ -7,5 +7,5 @@ export const selectIsAuthenticated = createSelector(
     selectAuthState,
     (state: AuthState) => state.isAuthenticated
 );
-export const selectisPending = createSelector(selectAuthState, (state: AuthState) => state.isPending);
+export const selectIsPending = createSelector(selectAuthState, (state: AuthState) => state.isPending);
 export const selectUid = createSelector(selectAuthState, (state: AuthState) => state.uid);
