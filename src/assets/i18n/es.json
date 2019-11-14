@@ -1,4 +1,5 @@
 {
     "auth.resetPassword": "Restablecer la contraseña",
-    "navigation.home": "Casa"
+    "navigation.home": "Casa",
+    "navigation.settings": "Configuraciones"
 }

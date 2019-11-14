@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    public navigation = [{ link: 'home', label: 'navigation.home' }];
+    public navigation = [
+        { link: 'home', label: 'navigation.home' },
+        { link: 'settings', label: 'navigation.settings' },
+    ];
     public navigationSideMenu = [...this.navigation];
 }
