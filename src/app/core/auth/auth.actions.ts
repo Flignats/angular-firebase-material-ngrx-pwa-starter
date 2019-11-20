@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Authenticate } from './auth.models';
+import { Authenticate, AuthedUser } from './auth.models';
 
 export const login = createAction(
     '[Auth] Login',
@@ -13,7 +13,7 @@ export const loginFailure = createAction(
 // TODO: create interface for the payload
 export const loginSuccess = createAction(
     '[Auth] Login => Success',
-    props<{ authedUser: any }>()
+    props<{ authedUser: AuthedUser }>()
 );
 
 export const register = createAction(
@@ -28,7 +28,7 @@ export const registerFailure = createAction(
 // TODO: create interface for the payload
 export const registerSuccess = createAction(
     '[Auth] Register => Success',
-    props<{ authedUser: any }>()
+    props<{ authedUser: AuthedUser }>()
 );
 
 export const resetPassword = createAction(

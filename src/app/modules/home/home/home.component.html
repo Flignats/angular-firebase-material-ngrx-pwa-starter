@@ -1,17 +1,6 @@
-<form [formGroup]="authForm" (ngSubmit)="onSubmitAuthForm()" *ngIf="!isRegistering">
-    <mat-form-field color="accent">
-        <input type="text" matInput placeholder="Email" formControlName="email">
-    </mat-form-field>
-    <mat-form-field color="accent">
-        <input type="password" matInput placeholder="Password" formControlName="password">
-    </mat-form-field>
-    <p class="button-wrapper">
-        <button type="submit" mat-raised-button color="primary" [disabled]="authForm.invalid">Submit</button>
-        <a mat-stroked-button (click)="onSwitchAuthForm()" color="accent">Create Account</a>
-    </p>
-    <div>
-        <button mat-button *ngIf="!passwordResetSuccess" [disabled]="isResetPasswordDisabled()"
-            (click)="onResetPassword()">{{ 'auth.resetPassword' | translate }}</button>
-        <p *ngIf="passwordResetSuccess">Password reset email sent.</p>
-    </div>
-</form>
+<app-auth-form
+    (submitAuth)="onSubmitAuth($event)"
+    (submitRegister)="onSubmitRegister($event)"
+></app-auth-form>
+
+<p>App description, this is an app description that the people will read a lot about</p>

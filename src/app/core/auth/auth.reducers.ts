@@ -1,17 +1,23 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as authActions from './auth.actions';
-import { AuthState } from './auth.models';
+import { AuthState, AuthedUser } from './auth.models';
 
 export const initialState: AuthState = {
     error: undefined,
-    uid: undefined,
     isAuthenticated: false,
-    isPending: false
+    isPending: false,
+    displayName: undefined,
+    email: undefined,
+    emailVerified: false,
+    phoneNumber: undefined,
+    photoUrl: undefined,
+    refreshToken: undefined,
+    uid: undefined,
 };
 
 const reducer = createReducer(
     initialState,
-    // Login
+    // Login & Register
     on(authActions.login, authActions.register, state => ({
         ...state,
         isPending: true
@@ -23,16 +29,16 @@ const reducer = createReducer(
     })),
     on(authActions.loginSuccess, authActions.registerSuccess, (state, { authedUser }) => ({
         ...state,
+        ...authedUser,
         isAuthenticated: true,
         isPending: false,
-        uid: authedUser.uid
     })),
     // Logout
     on(authActions.logout, () => ({
         ...initialState
-    }))
+    })),
 );
 
-export function authReducer(state: AuthState | undefined, action: Action) {
+export function authReducer(state: AuthState | undefined, action: Action): AuthState {
     return reducer(state, action);
 }

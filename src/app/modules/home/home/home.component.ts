@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CoreFacade } from '@app/core/core.facade';
+import { Authenticate } from '@app/core/auth/auth.models';
 
 @Component({
     selector: 'app-home',
@@ -9,44 +9,15 @@ import { CoreFacade } from '@app/core/core.facade';
 })
 export class HomeComponent implements OnInit {
     constructor(
-        private facadeCore: CoreFacade,
-        private fb: FormBuilder
+        private facadeCore: CoreFacade
     ) {}
-
-    // Forms
-    authForm = this.fb.group({
-        email: ['', Validators.required],
-        password: ['', Validators.required]
-    });
-    registerForm = this.fb.group({
-        displayName: [
-            '',
-            Validators.required
-            // DisplayNameValidator.displayName(this.afs)
-        ],
-        email: ['', Validators.required],
-        password: ['', Validators.required]
-    });
-
-    isRegistering = false;
-    passwordResetSuccess = false;
 
     ngOnInit() {}
 
-    isResetPasswordDisabled() {
-        if (this.authForm.controls.email.valid) {
-            return false;
-        }
-        return true;
+    onSubmitAuth(auth: Authenticate) {
+        this.facadeCore.login(auth);
     }
-    onResetPassword() {
-        // this.store.dispatch(
-        //   new ActionAuthResetPassword({ email: this.authForm.controls.email.value })
-        // );
-        // this.passwordResetSuccess = true;
-    }
-    onSubmitAuthForm() {}
-    onSwitchAuthForm() {
-        return (this.isRegistering = !this.isRegistering);
+    onSubmitRegister(auth: Authenticate) {
+        this.facadeCore.register(auth);
     }
 }

@@ -10,7 +10,8 @@
                     [routerLink]="[item.link]" routerLinkActive="active">
                     {{ item.label | translate }}
                 </a>
-                <a mat-list-item href="https://github.com/Flignats/angular-firebase-material-ngrx-pwa-starter" target="_blank">
+                <a mat-list-item href="https://github.com/Flignats/angular-firebase-material-ngrx-pwa-starter"
+                    target="_blank">
                     Github
                 </a>
             </mat-nav-list>
@@ -19,7 +20,9 @@
         <div class="view">
             <div class="toolbar">
                 <mat-toolbar color="primary">
-                    <button (click)="sidenav.open()">Open Sidenav</button>
+                    <button mat-icon-button aria-label="sidenav open/close button" (click)="sidenav.open()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
                 </mat-toolbar>
             </div>
 

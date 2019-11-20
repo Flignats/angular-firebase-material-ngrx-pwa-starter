@@ -5,7 +5,7 @@ import { login, register, resetPassword, logout } from './auth/auth.actions';
 import { actionSettingsChangeLanguage, actionSettingsChangeTheme } from './settings/settings.actions';
 import * as authSelectors from './auth/auth.selectors';
 import * as settingsSelectors from './settings/settings.selectors';
-import { Authenticate } from './auth/auth.models';
+import { Authenticate, AuthedUser } from './auth/auth.models';
 import { Language } from './settings/settings.model';
 
 @Injectable({
@@ -40,7 +40,7 @@ export class CoreFacade {
     public selectAuthIsPending$(): Observable<boolean> {
         return this.store.select(authSelectors.selectIsPending);
     }
-    public selectAuthUid$(): Observable<string> {
+    public selectUid$(): Observable<string> {
         return this.store.select(authSelectors.selectUid);
     }
 

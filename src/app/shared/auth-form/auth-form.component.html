@@ -1,0 +1,33 @@
+<mat-tab-group>
+    <mat-tab label="Login">
+        <form [formGroup]="authForm" (ngSubmit)="onSubmitAuthForm()">
+            <mat-form-field color="accent">
+                <input type="text" matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field color="accent">
+                <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+            <p class="button-wrapper">
+                <button type="submit" mat-raised-button color="primary" [disabled]="authForm.invalid">Submit</button>
+            </p>
+            <div>
+                <button mat-button *ngIf="!passwordResetSuccess" [disabled]="isResetPasswordDisabled()"
+                    (click)="onResetPassword()">{{ 'auth.resetPassword' | translate }}</button>
+                <p *ngIf="passwordResetSuccess">Password reset email sent.</p>
+            </div>
+        </form>
+    </mat-tab>
+    <mat-tab label="Register">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegisterForm()">
+            <mat-form-field color="accent">
+                <input type="text" matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field color="accent">
+                <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+            <p class="button-wrapper">
+                <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid">Submit</button>
+            </p>
+        </form>
+    </mat-tab>
+</mat-tab-group>
