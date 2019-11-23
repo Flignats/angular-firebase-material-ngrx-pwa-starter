@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const APP_PREFIX = 'AFMNPS-';
+const APP_PREFIX = 'cryptorts-';
 
 @Injectable({
     providedIn: 'root'

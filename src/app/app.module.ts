@@ -41,7 +41,7 @@ import { SettingsEffects } from './core/settings/settings.effects';
         BrowserAnimationsModule,
         CoreModule,
         SharedModule,
-        AngularFireModule.initializeApp(environment.firebase, 'angular-firebase-material-ngrx-pwa-starter'),
+        AngularFireModule.initializeApp(environment.firebase, 'cryptorts'),
         AngularFirestoreModule,
         AngularFireStorageModule,
         AngularFireAuthModule,
@@ -64,7 +64,7 @@ import { SettingsEffects } from './core/settings/settings.effects';
         }),
         StoreRouterConnectingModule.forRoot(),
         EffectsModule.forRoot([AuthEffects, SettingsEffects, GoogleAnalyticsEffects]),
-        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, name: 'angular-firebase-material-ngrx-pwa-starter' })
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, name: 'cryptorts' })
     ],
     providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
     bootstrap: [AppComponent]

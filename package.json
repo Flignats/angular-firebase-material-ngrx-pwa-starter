@@ -1,5 +1,5 @@
 {
-    "name": "angular-firebase-material-ngrx-pwa-starter",
+    "name": "cryptorts",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
@@ -8,7 +8,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "analyze": "webpack-bundle-analyzer ./dist/afmnps/stats-es2015.json",
+        "analyze": "webpack-bundle-analyzer ./dist/cryptorts/stats-es2015.json",
         "build:prod": "ng build --prod --vendor-chunk",
         "build:stats": "ng build --stats-json",
         "clean": "rimraf ./dist/",

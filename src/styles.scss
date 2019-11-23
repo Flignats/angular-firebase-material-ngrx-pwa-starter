@@ -21,10 +21,10 @@
 
 /* You can add global styles to this file, and also import other style files */
 @mixin custom-components-theme($theme) {
-    @include afmnps-styles-reset-theme($theme);
+    @include cryptorts-styles-reset-theme($theme);
 }
 
 .default-theme {
-    @include angular-material-theme($afmnps-theme);
-    @include custom-components-theme($afmnps-theme);
+    @include angular-material-theme($cryptorts-theme);
+    @include custom-components-theme($cryptorts-theme);
 }

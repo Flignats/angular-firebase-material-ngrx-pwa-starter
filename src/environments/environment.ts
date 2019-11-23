@@ -5,19 +5,19 @@
 const packageJson = require('../../package.json');
 
 export const environment = {
-    appName: 'angular-firebase-material-ngrx-pwa-starter',
+    appName: 'cryptorts',
     envName: 'DEV',
     production: false,
     i18nPrefix: '',
     firebase: {
-        apiKey: 'xxxxxxxxxxxxx',                                   // Insert your API  key here
-        authDomain: 'xxxxx.firebaseapp.com',                       // Update to your domain
-        databaseURL: 'https://xxxxx.firebaseio.com',               // Update your db url
-        projectId: 'xxxxx',                                        // Update to your project id
-        storageBucket: 'xxxxx.appspot.com',                        // Update to your app storeage bucket
-        messagingSenderId: 'xxxxxxxxxxxx',                         // Update to your app's messagingId
-        appId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',        // Update to your app's id
-        measurementId: 'xxxxxxxxxxx'                               // Update to your app's measurementId
+        apiKey: "AIzaSyDhN5YN--nAXr_4Q0FxoroRtc_AMFcigno",
+        authDomain: "cryptorts-58f4b.firebaseapp.com",
+        databaseURL: "https://cryptorts-58f4b.firebaseio.com",
+        projectId: "cryptorts-58f4b",
+        storageBucket: "cryptorts-58f4b.appspot.com",
+        messagingSenderId: "647700175181",
+        appId: "1:647700175181:web:05556c9bdff103c469ff04",
+        measurementId: "G-D0NTVH4L8Y"
     },
     versions: {
         app: packageJson.version,

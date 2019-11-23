@@ -3,14 +3,14 @@
         <mat-sidenav #sidenav mode="push" class="sidenav">
             <div class="sidenav__branding">
                 <mat-icon class="sidenav__logo">money</mat-icon>
-                <h4 class="sidenav__title">angular-firebase-material-ngrx-pwa-starter</h4>
+                <h4 class="sidenav__title">cryptorts</h4>
             </div>
             <mat-nav-list>
                 <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()"
                     [routerLink]="[item.link]" routerLinkActive="active">
                     {{ item.label | translate }}
                 </a>
-                <a mat-list-item href="https://github.com/Flignats/angular-firebase-material-ngrx-pwa-starter"
+                <a mat-list-item href="https://github.com/Flignats/cryptorts"
                     target="_blank">
                     Github
                 </a>

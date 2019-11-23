@@ -2,7 +2,7 @@
 // mat-palette accepts $palette-name, main, lighter and darker variants
 // https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=004D40&secondary.color=4CAF50
 
-$afmnps: (
+$cryptorts: (
     50: #e7e8e9,
     100: #c4c7c9,
     200: #9da1a5,
@@ -35,7 +35,7 @@ $afmnps: (
     )
 );
 
-$afmnps-accent: (
+$cryptorts-accent: (
     50: #fef4e5,
     100: #fce4bd,
     200: #fbd391,
@@ -71,13 +71,13 @@ $afmnps-accent: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$afmnps-primary: mat-palette($afmnps, 500, 400, 800);
-$afmnps-accent: mat-palette($afmnps-accent, 500, 400, 800);
-$afmnps-warn: mat-palette($mat-red);
+$cryptorts-primary: mat-palette($cryptorts, 500, 400, 800);
+$cryptorts-accent: mat-palette($cryptorts-accent, 500, 400, 800);
+$cryptorts-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$afmnps-theme: mat-dark-theme(
-    $afmnps-primary,
-    $afmnps-accent,
-    $afmnps-warn
+$cryptorts-theme: mat-dark-theme(
+    $cryptorts-primary,
+    $cryptorts-accent,
+    $cryptorts-warn
 );
