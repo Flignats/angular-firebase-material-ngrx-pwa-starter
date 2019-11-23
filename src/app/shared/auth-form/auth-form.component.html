@@ -10,7 +10,7 @@
             <p class="button-wrapper">
                 <button type="submit" mat-raised-button color="primary" [disabled]="authForm.invalid">Submit</button>
             </p>
-            <div>
+            <div class="reset-password">
                 <button mat-button *ngIf="!passwordResetSuccess" [disabled]="isResetPasswordDisabled()"
                     (click)="onResetPassword()">{{ 'auth.resetPassword' | translate }}</button>
                 <p *ngIf="passwordResetSuccess">Password reset email sent.</p>

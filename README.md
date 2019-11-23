@@ -1,4 +1,4 @@
-# Angular Firebase, Material, NgRx, PWA starter app
+# cryptorts
 
 by [@TheRealFlignats](https://twitter.com/TheRealFlignats)
 

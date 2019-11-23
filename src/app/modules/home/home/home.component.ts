@@ -13,11 +13,4 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit() {}
-
-    onSubmitAuth(auth: Authenticate) {
-        this.facadeCore.login(auth);
-    }
-    onSubmitRegister(auth: Authenticate) {
-        this.facadeCore.register(auth);
-    }
 }

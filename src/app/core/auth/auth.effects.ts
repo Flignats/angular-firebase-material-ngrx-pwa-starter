@@ -32,7 +32,7 @@ export class AuthEffects {
                             photoUrl: authedUser.user.photoURL,
                             refreshToken: authedUser.user.refreshToken,
                             uid: authedUser.user.uid
-                        }
+                        };
 
                         return loginSuccess({ authedUser: user });
                     }),
@@ -62,7 +62,7 @@ export class AuthEffects {
                             photoUrl: authedUser.user.photoURL,
                             refreshToken: authedUser.user.refreshToken,
                             uid: authedUser.user.uid
-                        }
+                        };
 
                         return registerSuccess({ authedUser: user });
                     }),
