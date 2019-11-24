@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoreFacade } from '@app/core/core.facade';
+import { CoreFacade } from '@app/core/facades/core.facade';
 import { Authenticate } from '@app/core/auth/auth.models';
 
 @Component({

@@ -15,10 +15,11 @@ import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { SharedModule } from '../shared/shared.module';
 import { TitleService } from './title/title.service';
 import { LocalStorageService } from './local-storage/local-storage.service';
+import { UserModule } from '@app/modules/user/user.module';
 
 @NgModule({
     declarations: [],
-    imports: [CommonModule, HttpClientModule, SharedModule],
+    imports: [CommonModule, HttpClientModule, SharedModule, UserModule],
     providers: [
         FirestoreService,
         NotificationService,

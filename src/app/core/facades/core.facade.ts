@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { login, register, resetPassword, logout } from './auth/auth.actions';
-import { actionSettingsChangeLanguage, actionSettingsChangeTheme } from './settings/settings.actions';
-import * as authSelectors from './auth/auth.selectors';
-import * as settingsSelectors from './settings/settings.selectors';
-import { Authenticate, AuthedUser } from './auth/auth.models';
-import { Language } from './settings/settings.model';
+import { login, register, resetPassword, logout } from '../auth/auth.actions';
+import { actionSettingsChangeLanguage, actionSettingsChangeTheme } from '../settings/settings.actions';
+import * as authSelectors from '../auth/auth.selectors';
+import * as settingsSelectors from '../settings/settings.selectors';
+import { Authenticate, AuthedUser } from '../auth/auth.models';
+import { Language } from '../settings/settings.model';
 
 @Injectable({
     providedIn: 'root'

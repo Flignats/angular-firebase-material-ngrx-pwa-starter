@@ -16,8 +16,10 @@
     ],
     "paths": {
       "@app/*": ["app/*"],
+      "@core/*": ["app/core/*"],
       "@env/*": ["environments/*"],
-      "@testing/*": ["testing/*"]
+      "@testing/*": ["testing/*"],
+      "@user/*": ["app/modules/user/*"]
     },
     "lib": [
       "es2018",
