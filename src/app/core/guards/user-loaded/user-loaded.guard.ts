@@ -1,4 +1,3 @@
-import { selectUserAccount } from './../../../modules/user/user.selectors';
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable, Subscription, of } from 'rxjs';
