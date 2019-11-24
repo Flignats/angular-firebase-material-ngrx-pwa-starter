@@ -41,12 +41,32 @@
 
 .content {
     flex: 1 0 auto;
-    margin-top: 64px;
     overflow: hidden;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-rows: 1fr 64px;
+    grid-template-areas: "outlet sidebar" "footer sidebar";
+    height: calc(100vh - 64px);
+    margin-top: 64px;
+}
+
 .footer {
+    background-color: #252c33;
+    border-top: 4px solid #181e23;
+    grid-area: footer;
     flex: 0 0 auto;
     padding: 0 15px;
     text-align: center;
+    height: 60px;
 }
+
+.sidebar { 
+    background-color: #252c33;
+    border-left: 4px solid #181e23;
+    grid-area: sidebar; 
+}
+
+.outlet { grid-area: outlet; }

@@ -10,8 +10,7 @@
                     [routerLink]="[item.link]" routerLinkActive="active">
                     {{ item.label | translate }}
                 </a>
-                <a mat-list-item href="https://github.com/Flignats/cryptorts"
-                    target="_blank">
+                <a mat-list-item href="https://github.com/Flignats/cryptorts" target="_blank">
                     Github
                 </a>
             </mat-nav-list>
@@ -26,12 +25,16 @@
                 </mat-toolbar>
             </div>
 
-            <div class="content">
-                <router-outlet #o="outlet"></router-outlet>
-            </div>
-
-            <div class="footer">
-                Footer
+            <div class="grid-container">
+                <div class="sidebar">
+                    Sidebar!
+                </div>
+                <div class="footer">
+                    <button type="button" mat-button>Click me</button>
+                </div>
+                <div class="outlet content">
+                    <router-outlet #o="outlet"></router-outlet>
+                </div>
             </div>
         </div>
     </mat-sidenav-container>
