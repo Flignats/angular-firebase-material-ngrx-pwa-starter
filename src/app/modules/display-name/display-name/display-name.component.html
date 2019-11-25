@@ -1,0 +1,24 @@
+<div class="display-name">
+    <h1>Welcome to [CryptoRTS]</h1>
+
+    <div class="display-name__desc">
+        <p>
+            What are you called?
+        </p>
+        <form [formGroup]="displayNameForm" (ngSubmit)="onSubmitDisplayNameForm()">
+            <mat-form-field color="accent">
+                <input type="text" matInput formControlName="displayName" class="form-name__enter-name"
+                    placeholder="Choose a Display Name" minlength="4" maxlength="30" required="true"
+                    (keydown.space)="$event.preventDefault();">
+            </mat-form-field>
+            <mat-progress-bar mode="indeterminate" *ngIf="(triggers$ | async)?.setDisplayName?.pending"></mat-progress-bar>
+            <p class="button-wrapper">
+                <button type="submit" mat-raised-button color="primary"
+                    [disabled]="displayNameForm.invalid || (triggers$ | async)?.setDisplayName?.pending">Submit</button>
+            </p>
+            <div class="form-name__error-display-name" *ngIf="displayNameExistsInvalid">
+                Display name is already taken
+            </div>
+        </form>
+    </div>
+</div>

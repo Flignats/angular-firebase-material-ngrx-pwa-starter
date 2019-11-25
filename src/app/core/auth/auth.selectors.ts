@@ -9,3 +9,4 @@ export const selectIsAuthenticated = createSelector(
 );
 export const selectIsPending = createSelector(selectAuthState, (state: AuthState) => state.isPending);
 export const selectUid = createSelector(selectAuthState, (state: AuthState) => state.uid);
+export const selectUserDisplayName = createSelector(selectAuthState, (state: AuthState) => state.displayName);

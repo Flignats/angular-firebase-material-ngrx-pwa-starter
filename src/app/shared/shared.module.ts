@@ -23,6 +23,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 // Components
 import { AuthFormComponent } from './auth-form/auth-form.component';
 
@@ -52,7 +54,8 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
         MatTooltipModule,
         MatSnackBarModule,
         MatSlideToggleModule,
-        MatDividerModule
+        MatDividerModule,
+        MatProgressBarModule
     ],
     exports: [
         CommonModule,
@@ -76,6 +79,7 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
         MatSnackBarModule,
         MatSlideToggleModule,
         MatDividerModule,
+        MatProgressBarModule,
         MatDatepickerModule,
         AuthFormComponent
     ]

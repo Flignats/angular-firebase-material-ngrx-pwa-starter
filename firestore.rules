@@ -9,5 +9,16 @@ service cloud.firestore {
             match /users/{userId} {
                 allow read: if request.auth.uid == userId;
             }
+
+            match /users/{userId}/triggers/{document=**} {
+                allow create, read, update: if request.auth.uid == userId;
+            }
+            match /users/{userId}/triggersStatus/{document=**} {
+                allow create, read, update: if request.auth.uid == userId;
+            }
+
+            match /displayNames/{document=**} {
+                allow read: if signedInOrPublic();
+            }
     }
 }

@@ -10,7 +10,7 @@ import {
     DocumentSnapshotDoesNotExist,
     DocumentSnapshotExists
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import * as firebase from 'firebase/app';
@@ -60,13 +60,50 @@ export class FirestoreService {
             );
     }
 
-    /// Firebase Server Timestamp
+    // Firebase Server Timestamp
     get timestamp() {
         return firebase.firestore.FieldValue.serverTimestamp();
+    }
+
+    // Set a document
+    set<T>(ref: DocPredicate<T>, data: any): Promise<void> {
+        const timestamp = this.timestamp;
+        return this.doc(ref).set({
+            ...data,
+            updatedAt: timestamp,
+            createdAt: timestamp
+        });
     }
 
     // User
     public loadUser(uid: any): Observable<IUser> {
         return this.doc$('users/' + uid);
+    }
+
+    // User: Trigger Set Display Name
+    public getTriggerStatusSetDisplayName(uid) {
+        return this.doc$('users/' + uid + '/triggersStatus/setDisplayName');
+    }
+    public triggerSetDisplayName(uid: string, name) {
+        const batch = firebase.firestore().batch();
+        const timestamp = this.timestamp;
+
+        const triggerDocRef = firebase.firestore().doc('users/' + uid + '/triggers/setDisplayName');
+        const triggerStatusDocRef = firebase.firestore().doc('users/' + uid + '/triggersStatus/setDisplayName');
+
+        batch.set(triggerDocRef, {
+            createdAt: timestamp,
+            uid,
+            displayName: name.displayName
+        });
+
+        batch.set(triggerStatusDocRef, {
+            createdAt: timestamp,
+            displayName: name.displayName,
+            pending: true,
+            uid,
+        });
+
+        return from(batch.commit());
     }
 }

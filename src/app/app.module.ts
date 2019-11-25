@@ -39,12 +39,12 @@ import { SettingsEffects } from './core/settings/settings.effects';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        CoreModule,
-        SharedModule,
-        AngularFireModule.initializeApp(environment.firebase, 'cryptorts'),
+        AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireStorageModule,
         AngularFireAuthModule,
+        CoreModule,
+        SharedModule,
         AppRoutingModule,
         // i18n
         TranslateModule.forRoot({

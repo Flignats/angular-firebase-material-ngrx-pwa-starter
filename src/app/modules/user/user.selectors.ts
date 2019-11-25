@@ -15,3 +15,8 @@ export const selectUserLoading = createSelector(
     selectUser,
     (state: UserState) => state.state.loading
 );
+
+export const selectUserTriggers = createSelector(
+    selectUser,
+    (state: UserState) => state.state.triggers
+);
