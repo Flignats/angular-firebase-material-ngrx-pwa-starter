@@ -1,4 +1,4 @@
-import { selectUserAccount } from './../../../modules/user/user.selectors';
+import { selectUserAccount, selectUserAccountDisplayName } from './../../../modules/user/user.selectors';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';

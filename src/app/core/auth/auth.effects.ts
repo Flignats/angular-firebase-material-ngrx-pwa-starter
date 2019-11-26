@@ -1,14 +1,27 @@
+import { AppState } from './../core.state';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 // Firebase
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
-import { Action } from '@ngrx/store';
+import { Action, select, Store } from '@ngrx/store';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of, from } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
-import { login, loginSuccess, loginFailure, register, registerSuccess, registerFailure } from './auth.actions';
+import { map, catchError, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import {
+    login,
+    loginSuccess,
+    loginFailure,
+    register,
+    registerSuccess,
+    registerFailure,
+    logout,
+    updateAuth,
+    updateAuthSuccess,
+    updateAuthFailure
+} from './auth.actions';
 import { Authenticate, AuthedUser } from './auth.models';
+import { selectUserAccountDisplayName } from '@app/modules/user/user.selectors';
 
 @Injectable()
 export class AuthEffects {
@@ -16,7 +29,17 @@ export class AuthEffects {
         private actions$: Actions<Action>,
         private authService: AngularFireAuth,
         private router: Router,
-    ) {}
+        private store: Store<AppState>
+    ) {
+        firebase.auth().onAuthStateChanged(authedUser => {
+            if (!authedUser) {
+                logout();
+            }
+            if (authedUser) {
+                updateAuth();
+            }
+        });
+    }
 
     login$ = createEffect(() =>
         this.actions$.pipe(
@@ -47,6 +70,18 @@ export class AuthEffects {
         )
     );
 
+    logout$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(logout),
+                tap(() => {
+                    this.authService.auth.signOut();
+                    this.router.navigate(['/about']);
+                })
+            ),
+        { dispatch: false }
+    );
+
     register$ = createEffect(() =>
         this.actions$.pipe(
             ofType(register),
@@ -72,12 +107,37 @@ export class AuthEffects {
         )
     );
 
-    redirectHome$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(loginSuccess, registerSuccess),
-            map(action => action.authedUser),
-            switchMap(() => this.router.navigate(['/home']))
-        ),
+    redirectHome$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(loginSuccess, registerSuccess),
+                map(action => action.authedUser),
+                switchMap(() => this.router.navigate(['/home']))
+            ),
         { dispatch: false }
+    );
+
+    updateAuth$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(updateAuth),
+            withLatestFrom(this.store.pipe(select(selectUserAccountDisplayName))),
+            switchMap(([action, userDisplayName]) =>
+                from(this.authService.authState).pipe(
+                    map(authedUser => {
+                        const user: AuthedUser = {
+                            displayName: authedUser.displayName ? authedUser.displayName : userDisplayName,
+                            email: authedUser.email,
+                            emailVerified: authedUser.emailVerified,
+                            phoneNumber: authedUser.phoneNumber,
+                            photoUrl: authedUser.photoURL,
+                            refreshToken: authedUser.refreshToken,
+                            uid: authedUser.uid
+                        };
+                        return updateAuthSuccess({ authedUser: user });
+                    }),
+                    catchError(error => of(updateAuthFailure({ error })))
+                )
+            )
+        )
     );
 }

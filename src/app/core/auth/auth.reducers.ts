@@ -18,16 +18,16 @@ export const initialState: AuthState = {
 const reducer = createReducer(
     initialState,
     // Login & Register
-    on(authActions.login, authActions.register, state => ({
+    on(authActions.login, authActions.register, authActions.updateAuth, state => ({
         ...state,
         isPending: true
     })),
-    on(authActions.loginFailure, authActions.registerFailure, (state, { error }) => ({
+    on(authActions.loginFailure, authActions.registerFailure, authActions.updateAuthFailure, (state, { error }) => ({
         ...state,
         error,
         isPending: false
     })),
-    on(authActions.loginSuccess, authActions.registerSuccess, (state, { authedUser }) => ({
+    on(authActions.loginSuccess, authActions.registerSuccess, authActions.updateAuthSuccess, (state, { authedUser }) => ({
         ...state,
         ...authedUser,
         isAuthenticated: true,

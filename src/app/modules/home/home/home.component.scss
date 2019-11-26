@@ -59,6 +59,37 @@
         -webkit-box-shadow: inset 0px 0px 12px 5px rgba(247,255,0,0.35);
         -moz-box-shadow: inset 0px 0px 12px 5px rgba(247,255,0,0.35);
         box-shadow: inset 0px 0px 12px 5px rgba(247,255,0,0.35);
+        transition: all 0.5s;
+    }
+
+    .building {
+        height: 120px;
+        width: 120px;
+        position: relative;
+
+        &.empty {
+            &::after {
+                content: '';
+                background: url('../../../../assets/home/button_build.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 60%;
+                opacity: 0.35;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                position: absolute;
+                z-index: 0;  
+            }
+
+            &:hover {
+                &::after {
+                    opacity: 0.8;
+                    transition: all 0.5s;
+                }
+            }
+        }
     }
 }
 

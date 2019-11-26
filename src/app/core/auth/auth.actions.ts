@@ -10,11 +10,13 @@ export const loginFailure = createAction(
     '[Auth] Login => Fail',
     props<{ error: any }>()
 );
-// TODO: create interface for the payload
+
 export const loginSuccess = createAction(
     '[Auth] Login => Success',
     props<{ authedUser: AuthedUser }>()
 );
+
+export const logout = createAction('[Auth] Logout');
 
 export const register = createAction(
     '[Auth] Register',
@@ -25,7 +27,7 @@ export const registerFailure = createAction(
     '[Auth] Register => Fail',
     props<{ error: any }>()
 );
-// TODO: create interface for the payload
+
 export const registerSuccess = createAction(
     '[Auth] Register => Success',
     props<{ authedUser: AuthedUser }>()
@@ -36,4 +38,16 @@ export const resetPassword = createAction(
     props<{ email: string }>()
 );
 
-export const logout = createAction('[Auth] Logout');
+export const updateAuth = createAction(
+    '[Auth] Update'
+);
+
+export const updateAuthFailure = createAction(
+    '[Auth] Update => Fail',
+    props<{ error: any }>()
+);
+
+export const updateAuthSuccess = createAction(
+    '[Auth] Update => Success',
+    props<{ authedUser: AuthedUser }>()
+);

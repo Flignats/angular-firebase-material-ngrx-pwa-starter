@@ -5,6 +5,7 @@ import { DisplayNameValidator } from '@app/shared/validators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IUserTriggers } from '@app/modules/user/user.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-display-name',
@@ -23,8 +24,9 @@ export class DisplayNameComponent implements OnInit {
     });
 
     constructor(
-        private fb: FormBuilder,
         private afs: AngularFirestore,
+        private fb: FormBuilder,
+        private router: Router,
         private userFacade: UserFacade
     ) {}
 
@@ -38,6 +40,10 @@ export class DisplayNameComponent implements OnInit {
 
     get displayNameExistsInvalid() {
         return this.displayNameStr.hasError('uid');
+    }
+
+    public onGoHome(): void {
+        this.router.navigate(['/home']);
     }
 
     public onSubmitDisplayNameForm(): void {

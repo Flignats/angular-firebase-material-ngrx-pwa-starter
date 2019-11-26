@@ -6,6 +6,10 @@ service cloud.firestore {
                 return request.auth.uid != null || resource.data.visibility == 'public';
             }
 
+            match /userCities/{userId} {
+                allow read: if request.auth.uid == userId;
+            }
+
             match /users/{userId} {
                 allow read: if request.auth.uid == userId;
             }

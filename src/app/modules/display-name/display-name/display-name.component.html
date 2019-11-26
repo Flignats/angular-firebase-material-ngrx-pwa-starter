@@ -11,11 +11,16 @@
                     placeholder="Choose a Display Name" minlength="4" maxlength="30" required="true"
                     (keydown.space)="$event.preventDefault();">
             </mat-form-field>
-            <mat-progress-bar mode="indeterminate" *ngIf="(triggers$ | async)?.setDisplayName?.pending"></mat-progress-bar>
+            <mat-progress-bar mode="indeterminate" *ngIf="(triggers$ | async)?.setDisplayName?.pending">
+            </mat-progress-bar>
             <p class="button-wrapper">
                 <button type="submit" mat-raised-button color="primary"
-                    [disabled]="displayNameForm.invalid || (triggers$ | async)?.setDisplayName?.pending">Submit</button>
+                    [disabled]="displayNameForm.invalid || (triggers$ | async)?.setDisplayName">Submit</button>
             </p>
+            <div *ngIf="(triggers$ | async)?.setDisplayName.success">
+                <p>Let's begin your journey...</p>
+                <button type="button" mat-raised-button color="accent" (click)="onGoHome()">Continue</button>
+            </div>
             <div class="form-name__error-display-name" *ngIf="displayNameExistsInvalid">
                 Display name is already taken
             </div>

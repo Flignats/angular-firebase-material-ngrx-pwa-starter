@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Action, Store, select } from '@ngrx/store';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of, from } from 'rxjs';
-import { map, catchError, switchMap, withLatestFrom } from 'rxjs/operators';
+import { map, catchError, switchMap, withLatestFrom, tap } from 'rxjs/operators';
 import {
     loadUser,
     loadUserSuccess,
@@ -17,6 +17,8 @@ import { AppState } from '@app/core/core.state';
 import { selectUid } from '@app/core/auth/auth.selectors';
 import { FirestoreService } from '@app/core/firestore/firestore.service';
 import { IUserTriggers } from './user.model';
+import * as firebase from 'firebase/app';
+import { updateAuth } from '@app/core/auth/auth.actions';
 
 @Injectable()
 export class UserEffects {
@@ -59,5 +61,13 @@ export class UserEffects {
                 )
             )
         )
+    );
+
+    triggerLoadStatusSetDisplayNameSuccess$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(triggerLoadStatusSetDisplayNameSuccess),
+                map(() => updateAuth())
+            ),
     );
 }

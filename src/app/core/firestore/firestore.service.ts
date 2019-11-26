@@ -14,6 +14,7 @@ import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import * as firebase from 'firebase/app';
+import { IBuildings } from '@app/modules/home/home.model';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;
@@ -73,6 +74,11 @@ export class FirestoreService {
             updatedAt: timestamp,
             createdAt: timestamp
         });
+    }
+
+    // Home
+    public loadUserBuildings(uid: any): Observable<IBuildings> {
+        return this.doc$('userCities/' + uid);
     }
 
     // User
