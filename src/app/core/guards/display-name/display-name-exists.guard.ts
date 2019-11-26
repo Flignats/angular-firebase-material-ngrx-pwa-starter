@@ -20,7 +20,6 @@ export class DisplayNameExistsGuard implements CanActivate {
         return this.store.pipe(
             select(selectUserDisplayName),
             map(displayName => {
-                console.log('displayName:::', displayName);
                 if (displayName) {
                     this.router.navigate(['/home']);
                     return false;

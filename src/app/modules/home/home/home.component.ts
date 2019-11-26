@@ -1,6 +1,10 @@
+import { Observable } from 'rxjs';
+import { UserFacade } from '@app/core/facades/user.facade';
 import { Component, OnInit } from '@angular/core';
 import { CoreFacade } from '@app/core/facades/core.facade';
 import { Authenticate } from '@app/core/auth/auth.models';
+import { IUser } from '@app/modules/user/user.model';
+import { JoyrideService } from 'ngx-joyride';
 
 @Component({
     selector: 'app-home',
@@ -8,9 +12,46 @@ import { Authenticate } from '@app/core/auth/auth.models';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    public user$: Observable<IUser>;
+    public tourGuide$: any;
+
+    public stepTitle: 'this is a title';
+
+    public stepTwo = 'Hello Step 2!';
+    public stepTwoTitle = '2 Title!';
+
+    public steps = {
+        title: {
+            firstStep:  'Let\'s Begin!',
+            secondStep: 'Land Plot'
+        },
+        content: {
+            firstStep:  'This is your home base. Your goal is to increase your base\'s level and grow your city wisely!',
+            secondStep: 'A \'Land Plot\' is an area in which you can build a new structure [barracks, housing, research, ect]'
+        }
+    };
+
     constructor(
-        private facadeCore: CoreFacade
+        private facadeCore: CoreFacade,
+        private userFacade: UserFacade,
+        private readonly joyrideService: JoyrideService
     ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.user$ = this.userFacade.selectUserAccount$();
+    }
+
+    onStartTour() {
+        const options = {
+            steps: [
+                'firstStep',
+                'secondStep',
+            ],
+            stepDefaultPosition: 'top',
+            themeColor: '#000',
+            showPrevButton: true,
+            logsEnabled: true
+        };
+        this.tourGuide$ = this.joyrideService.startTour(options);
+    }
 }

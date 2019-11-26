@@ -1,1 +1,48 @@
-<p>HOME WORKS!</p>
+<div class="home">
+    <div class="game" joyrideStep="firstStep" [title]="steps.title.firstStep" [text]="steps.content.firstStep">
+        <div class="game__row game__row--first">
+            <div class="game__row__cell" joyrideStep="secondStep" [title]="steps.title.secondStep" [text]="steps.content.secondStep"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+        </div>
+        <div class="game__row game__row--second">
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+        </div>
+        <div class="game__row game__row--three">
+            <div class="game__row__cell"></div>
+        </div>
+        <div class="game__row game__row--four">
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+        </div>
+        <div class="game__row game__row--five">
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+            <div class="game__row__cell"></div>
+        </div>
+    </div>
+</div>
+<app-tour
+    *ngIf="(user$ | async)"
+    [user]="(user$ | async)"
+    (startTour)="onStartTour()"
+></app-tour>

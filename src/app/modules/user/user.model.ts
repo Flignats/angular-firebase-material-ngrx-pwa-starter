@@ -7,8 +7,18 @@ export interface IUser {
     displayName?: string;
     email: string;
     fcmTokens?: { [token: string]: true };
+    shield?: {
+        active: boolean;
+        activatedAt?: Timestamp,
+        expiresAt?: Timestamp,
+    };
+    tours?: IUserTours;
     uid: string;
     updatedAt?: Timestamp;
+}
+
+export interface IUserTours {
+    [key: string]: boolean;
 }
 
 export interface IUserTriggers {

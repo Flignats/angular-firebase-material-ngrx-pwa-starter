@@ -34,6 +34,9 @@ import { AuthEffects } from './core/auth/auth.effects';
 import { GoogleAnalyticsEffects } from './core/google-analytics/google-analytics.effects';
 import { SettingsEffects } from './core/settings/settings.effects';
 
+// Joyride
+import { JoyrideModule } from 'ngx-joyride';
+
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -46,6 +49,8 @@ import { SettingsEffects } from './core/settings/settings.effects';
         CoreModule,
         SharedModule,
         AppRoutingModule,
+        // Tour guide
+        JoyrideModule.forRoot(),
         // i18n
         TranslateModule.forRoot({
             loader: {

@@ -17,11 +17,15 @@ export async function onTriggerSetDisplayName(change: any, context: any) {
         const triggerStatusDoc  = firestoreInstance.collection(utils.API_URLS.users).doc(uid).collection('triggersStatus').doc('setDisplayName');
 
         /**
-         *  1. Update userDoc
-         *  2. Update displayNameDoc
-         *  3. Update afUser
+         *  1. Update afUser
+         *  2. Update userDoc
+         *  3. Update displayNameDoc
          *  4. Update triggerStatusDoc
          */
+        const updateAfUser = await admin.auth().updateUser(uid, {
+            displayName
+        });
+
         batch.set(userDoc, {
             displayName: displayName,
             updatedAt: serverTimestamp,
@@ -32,10 +36,6 @@ export async function onTriggerSetDisplayName(change: any, context: any) {
             displayName: displayName,
             uid,
         }, { merge: true });
-
-        const updateAfUser = await admin.auth().updateUser(uid, {
-            displayName
-        });
 
         batch.set(triggerStatusDoc, {
             pending: false,

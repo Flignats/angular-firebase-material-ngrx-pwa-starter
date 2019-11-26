@@ -1,0 +1,81 @@
+.home {
+    display: block;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+}
+
+.game {
+    background: url('../../../../assets/home/bg_home.png');
+    height: 800px;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.game__row {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    padding-left: 99px;
+
+    &.game__row--first {
+        .game__row__cell {
+            top: 23px;
+        }
+    }
+    &.game__row--second {
+        .game__row__cell {
+            top: 3px;
+        }
+    }
+    &.game__row--three {
+        .game__row__cell {
+            top: 20px;
+            left: 810px;
+        }
+    }
+    &.game__row--four {
+        .game__row__cell {
+            top: 37px;
+        }
+    }
+    &.game__row--five {
+        .game__row__cell {
+            top: 17px;
+        }
+    }
+}
+
+.game__row__cell {
+    border: 1px solid red;
+    height: 120px;
+    position: relative;
+    width: 120px;
+    margin-right: 28px;
+
+    &:hover {
+        border: 1px solid yellow;
+        cursor: pointer;
+        -webkit-box-shadow: inset 0px 0px 12px 5px rgba(247,255,0,0.35);
+        -moz-box-shadow: inset 0px 0px 12px 5px rgba(247,255,0,0.35);
+        box-shadow: inset 0px 0px 12px 5px rgba(247,255,0,0.35);
+    }
+}
+
+// .character {
+//     width: 107px;
+//     height: 107px;
+//     background-image: url("../../../../assets/home/character_flignats_2.png");
+//     animation: playX 1s steps(15) infinite,
+//                playY 2s steps(2) infinite;
+// }
+
+// @keyframes playX {
+//     from {background-position-x: 0px;}
+//     to {background-position-x: -1605px;}
+// }
+
+// @keyframes playY {
+//     from {background-position-y: 0px;}
+//     to {background-position-y: -214px;}
+// }

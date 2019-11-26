@@ -23,6 +23,7 @@ export async function onNewUserCreated(user: any, context: any) {
         createdAt: serverTimestamp,
         displayName: null,
         email: user.email,
+        tours: null,
         uid: user.uid,
         updatedAt: serverTimestamp,
     }, { merge: true });
