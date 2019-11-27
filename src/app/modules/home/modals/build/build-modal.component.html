@@ -1,0 +1,32 @@
+<div class="modal">
+    <div class="row">
+        <div class="cell cell--home" [ngClass]="{'selected': selections.house.active}" (click)="onSelectBuilding('house')"></div>
+        <div class="cell cell--barracks" [ngClass]="{'selected': selections.barracks_resource.active}" (click)="onSelectBuilding('barracks_resource')"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+    <div class="row">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+    <div class="row row--info">
+        <p *ngIf="!selected">Select a building from above.</p>
+        <ng-container *ngIf="selected">
+                <h4>{{ selected.title }}</h4>
+                <p>{{ selected.description }}</p>
+                <div class="row__cost">
+                    ...Unit Cost...
+                </div>
+        </ng-container>
+    </div>
+</div>

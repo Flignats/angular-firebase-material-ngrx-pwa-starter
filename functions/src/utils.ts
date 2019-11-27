@@ -6,6 +6,7 @@ const firestoreInstance = admin.firestore();
 
 export const API_URLS = {
     appStatsDaily: 'appStatsDaily',
+    buildings: 'buildings',
     displayNames: 'displayNames',
     users: 'users',
 };

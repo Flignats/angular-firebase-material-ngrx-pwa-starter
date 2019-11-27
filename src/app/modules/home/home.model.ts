@@ -15,15 +15,17 @@ export interface IHomeTriggers {
 
 export interface IBuildings {
     createdAt: Timestamp;
-    nodes: {
-        [key: string]: {
-            level: number;
-            node: number;
-            type: BuildingTypes;
-        };
-    };
+    nodes: INodes;
     uid: string;
     updatedAt: Timestamp;
+}
+
+export interface INodes {
+    [key: string]: {
+        level: number;
+        node: number;
+        type: BuildingTypes;
+    };
 }
 
 export interface HomeStateDetails {

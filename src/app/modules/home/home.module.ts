@@ -10,9 +10,11 @@ import { SharedModule } from 'app/shared/shared.module';
 import { TourComponent } from './tour/tour.component';
 // Joyride
 import { JoyrideModule } from 'ngx-joyride';
+import { BuildingComponent } from './building/building.component';
+import { BuildModalComponent } from './modals/build/build-modal.component';
 
 @NgModule({
-    declarations: [HomeComponent, TourComponent],
+    declarations: [HomeComponent, TourComponent, BuildingComponent, BuildModalComponent],
     imports: [
         CommonModule,
         SharedModule,
@@ -20,6 +22,7 @@ import { JoyrideModule } from 'ngx-joyride';
         JoyrideModule.forChild(),
         StoreModule.forFeature(FEATURE_NAME, reducers),
         EffectsModule.forFeature([HomeEffects])
-    ]
+    ],
+    entryComponents: [BuildModalComponent]
 })
 export class HomeModule {}

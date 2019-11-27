@@ -1,0 +1,70 @@
+.modal {
+    background: url('../../../../../assets/modals/modal_bg.png');
+    height: 479px;
+    width: 760px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1em;
+
+    &.row--info {
+        background: rgba($color: #000000, $alpha: 0.6);
+        color: white;
+        padding: 20px;
+        flex-direction: column;
+
+        h4 {
+            margin: 0 0 0.5em 0;
+        }
+    }
+}
+
+.row__cost {
+    border-top: 1px solid black;
+    background: rgba($color: #000000, $alpha: 0.8);
+    color: white;
+    padding-top: 0.5em;
+    width: 100%;
+    height: 40px;
+}
+
+.cell {
+    background-color: #3a434b;
+    
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 75px;
+    width: 75px;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+
+    &.cell--barracks {
+        background-image: url('../../../../../assets/modals/barracks_bg.png');
+    }
+    &.cell--home {
+        background-image: url('../../../../../assets/modals/building_home_basic.png');
+    }
+
+    &:hover {
+        -moz-box-shadow:    inset 0 0 10px #f7b344;
+        -webkit-box-shadow: inset 0 0 10px #f7b344;
+        box-shadow:         inset 0 0 10px #f7b344;
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+
+    &.selected {
+        -moz-box-shadow:    inset 0 0 10px #76ff03;
+        -webkit-box-shadow: inset 0 0 10px #76ff03;
+        box-shadow:         inset 0 0 10px #76ff03;
+        background-color: #1b5e20;
+    }
+}
