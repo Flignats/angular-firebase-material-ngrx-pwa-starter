@@ -1,12 +1,8 @@
 <div class="home">
-    <div class="game" joyrideStep="firstStep" [title]="steps.title.firstStep" [text]="steps.content.firstStep">
+    <div class="game">
         <div class="game__row game__row--first">
-            <div class="game__row__cell"
-                *ngFor="let building of (userBuildings$ | async)?.nodes | keyvalue | slice:0:7">
-                <app-building
-                    [building]="building"
-                    (modalOpen)="onModalOpen($event)"
-                ></app-building>
+            <div class="game__row__cell" *ngFor="let building of (userBuildings$ | async)?.nodes | keyvalue | slice:0:7">
+                <app-building [building]="building" (modalOpen)="onModalOpen($event)"></app-building>
             </div>
         </div>
         <div class="game__row game__row--second">
@@ -18,7 +14,7 @@
         <div class="game__row game__row--three">
             <div class="game__row__cell"
                 *ngFor="let building of (userBuildings$ | async)?.nodes | keyvalue | slice:14:15">
-                <app-building [building]="building"></app-building>
+                <app-building [building]="building" (modalOpen)="onModalOpen($event)"></app-building>
             </div>
         </div>
         <div class="game__row game__row--four">
@@ -34,4 +30,4 @@
         </div>
     </div>
 </div>
-<app-tour *ngIf="(user$ | async)" [user]="(user$ | async)" (startTour)="onStartTour()"></app-tour>
+<app-tour *ngIf="(user$ | async)" [user]="(user$ | async)" (newPlayerBonus)="onNewPlayerBonus($event)"></app-tour>

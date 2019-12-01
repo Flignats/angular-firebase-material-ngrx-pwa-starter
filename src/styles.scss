@@ -18,13 +18,29 @@
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @import './theme/styles-reset.scss-theme.scss';
+@import './app/app.component.scss-theme.scss';
 
 /* You can add global styles to this file, and also import other style files */
 @mixin custom-components-theme($theme) {
     @include cryptorts-styles-reset-theme($theme);
+    @include cryptorts-app-component-theme($theme);
 }
 
 .default-theme {
     @include angular-material-theme($cryptorts-theme);
     @include custom-components-theme($cryptorts-theme);
+}
+
+.sprite {
+    display: inline-block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+
+    &.sprite-main {
+        background-image:url('./assets/shared/main.png');
+    }
+}
+
+.mat-dialog-container {
+    width: auto;
 }

@@ -1,0 +1,9 @@
+<div class="world">
+    <div class="world-node" *ngFor="let node of nodes;">
+        <div class="sprite sprite-main" [ngClass]="classStyler(node)">
+            <span style="position: absolute; top: 7px; left:32px; color: rgba(255, 255, 255, 0.6)">
+                {{ node.level }}
+            </span>
+        </div>
+    </div>
+</div>

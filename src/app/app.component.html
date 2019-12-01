@@ -25,14 +25,103 @@
                 </mat-toolbar>
             </div>
 
-            <div class="grid-container">
+            <div class="grid-container" [ngClass]="classStyler()">
+                <!-- TODO: Breakup Sidebar into components -->
                 <div class="sidebar">
-                    Sidebar!
+                    <!-- City Component -->
+                    <div class="sidebar__user-city">
+                        <div>
+                            <mat-icon>house</mat-icon>
+                        </div>
+                    </div>
+                    <!-- Task Component -->
+                    <div class="sidebar__user-tasks">
+                        <div class="user-task">
+                            <mat-icon>sync_alt</mat-icon>
+                            <div>
+                                <div>Trigger action</div>
+                                <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+                            </div>
+                        </div>
+                        <div class="user-task">
+                            <mat-icon>build</mat-icon>
+                            <div>
+                                <div>Add a Building Task</div>
+                                <mat-progress-bar mode="determinate" value="75" color="accent"></mat-progress-bar>
+                            </div>
+                        </div>
+                        <div class="user-task">
+                            <mat-icon>polymer</mat-icon>
+                            <div>
+                                <div>Add a Research Task</div>
+                                <mat-progress-bar mode="determinate" value="35" color="accent"></mat-progress-bar>
+                            </div>
+                        </div>
+                        <div class="user-task">
+                            <mat-icon>transfer_within_a_station</mat-icon>
+                            <div>
+                                <div>Add a Training Task</div>
+                                <mat-progress-bar mode="determinate" value="60" color="accent"></mat-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tabs -->
+                    <!-- Resources Component -->
+                    <!-- Army Component -->
+                    <!-- Active Marching Component -->
+                    <div class="sidebar__tabs">
+                        <mat-tab-group>
+                            <mat-tab label="Resources">
+                                <div class="user-resources">
+                                    <div class="user-resource">
+                                        <mat-icon>people</mat-icon>
+                                        <div>
+                                            <div>{{ 5651 | number }}</div>
+                                            <div>population</div>
+                                        </div>
+                                    </div>
+                                    <div class="user-resource">
+                                        <mat-icon>reorder</mat-icon>
+                                        <div>
+                                            <div>{{ 789 | number }}</div>
+                                            <div>sand</div>
+                                        </div>
+                                    </div>
+                                    <div class="user-resource">
+                                        <mat-icon>blur_on</mat-icon>
+                                        <div>
+                                            <div>{{ 560 | number }}</div>
+                                            <div>stone</div>
+                                        </div>
+                                    </div>
+                                    <div class="user-resource">
+                                        <mat-icon>waves</mat-icon>
+                                        <div>
+                                            <div>{{ 1250 | number }}</div>
+                                            <div>water</div>
+                                        </div>
+                                    </div>
+                                    <div class="user-resource">
+                                        <mat-icon>nature</mat-icon>
+                                        <div>
+                                            <div>{{ 10569 | number }}</div>
+                                            <div>wood</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            <mat-tab label="Army"> Content 2 </mat-tab>
+                            <mat-tab label="March"> Content 3 </mat-tab>
+                        </mat-tab-group>
+                    </div>
                 </div>
                 <div class="footer">
-                    <button type="button" mat-button>World</button>
-                    <button type="button" mat-button>Home</button>
-                    <button type="button" mat-button>Settings</button>
+                    <mat-nav-list>
+                        <a mat-list-item *ngFor="let item of navigation" [routerLink]="[item.link]"
+                            routerLinkActive="active">
+                            {{ item.label | translate }}
+                        </a>
+                    </mat-nav-list>
                 </div>
                 <div class="outlet content">
                     <router-outlet #o="outlet"></router-outlet>

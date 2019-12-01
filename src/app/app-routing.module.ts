@@ -22,7 +22,11 @@ const routes: Routes = [
     {
         path: 'settings',
         loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule)
-    }
+    },
+    {
+        path: 'world',
+        loadChildren: () => import('./modules/world/world.module').then(m => m.WorldModule)
+    },
 ];
 
 @NgModule({

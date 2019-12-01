@@ -9,13 +9,14 @@ import { IUser } from '@app/modules/user/user.model';
 export class TourComponent implements OnInit {
     @Input() user: IUser;
 
-    @Output() startTour = new EventEmitter<any>();
+    @Output() newPlayerBonus = new EventEmitter<string>();
 
     constructor() {}
 
     ngOnInit() {
-        if (!this.user.tours || !this.user.tours.hasCompletedHomeTour) {
-            this.startTour.emit();
+        // Launch New Player Bonus
+        if (!this.user.tours || !this.user.tours.hasCollectedNewPlayerBonus) {
+            this.newPlayerBonus.emit(this.user.displayName);
         }
     }
 }

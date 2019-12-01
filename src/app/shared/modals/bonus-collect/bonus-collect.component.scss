@@ -1,0 +1,102 @@
+.color-accent {
+    color: #f7b344;
+}
+
+.modal {
+    background: url('../../../../assets/modals/modal_bg_dark.png');
+    height: 479px;
+    width: 760px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+    box-shadow: 
+        0 0 0 10px hsl(207, 19%, 12%),
+        0 0 0 15px hsl(210, 16%, 17%),
+        0 0 0 20px hsl(208, 15%, 20%),
+        0 0 0 25px hsl(206, 13%, 24%),
+        0 0 0 30px hsl(208, 13%, 26%);
+}
+
+h4 {
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    margin: 0;
+    padding: 0.5em 0;
+    background: rgb(58,67,75);
+    background: linear-gradient(90deg, rgba(58,67,75,0) 25%, rgba(58,67,75,1) 50%, rgba(58,67,75,0) 75%);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1em;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &.row--info {
+        background: rgba($color: #000000, $alpha: 0.6);
+        color: white;
+        padding: 5px;
+        flex-direction: column;
+
+        p {
+            font-size: 11px;
+            margin: 0.3em;
+        }
+    }
+}
+
+.row__cost {
+    border-top: 1px solid black;
+    margin: 0.5em 0 0 0;
+    padding-top: 0.5em;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .user-resource {
+        background: #181e23;
+        display: flex;
+        flex: 1;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mat-icon {
+        font-size: 24px;
+        height: 24px;
+        width: 24px;
+        color: rgba(246, 166, 35, 0.4);
+        margin-right: 0.4em;
+    }
+
+    small {
+        margin-left: 6px;
+        color: rgba(255,255,255,0.8);
+    }
+}
+
+.bonus_seller {
+    width: 302px;
+    height: 219px;
+    overflow: hidden;
+    background-image: url("../../../../assets/modals/modal_seller.png");
+    animation: playX 2s steps(4) 3,
+               playY 4s steps(2) 3;
+}
+
+@keyframes playX {
+    from {background-position-x: 0px;}
+    to {background-position-x: -1208px;}
+}
+
+@keyframes playY {
+    from {background-position-y: 0px;}
+    to {background-position-y: -438px;}
+}

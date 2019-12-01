@@ -26,10 +26,19 @@ export async function onNewUserCreated(user: any, context: any) {
         totalNewUsers: admin.firestore.FieldValue.increment(1),
     }, { merge: true })
 
+    const today                         = serverTimestamp.toDate();
+    const shieldExpirationDate          = new Date(today.getTime() + 1000 * 60 * 60 * 24);
+    const shieldExpirationTimestamp     = admin.firestore.Timestamp.fromDate(shieldExpirationDate);
+
     batch.set(newUserDoc, {
         createdAt: serverTimestamp,
         displayName: null,
         email: user.email,
+        shield: {
+            active: true,
+            activatedAt: serverTimestamp,
+            expiresAt: shieldExpirationTimestamp,
+        },
         tours: null,
         uid: user.uid,
         updatedAt: serverTimestamp,

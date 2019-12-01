@@ -29,9 +29,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 // Components
 import { AuthFormComponent } from './auth-form/auth-form.component';
+import { BonusCollectModalComponent } from './modals/bonus-collect/bonus-collect.component';
 
 @NgModule({
-    declarations: [AuthFormComponent],
+    declarations: [AuthFormComponent, BonusCollectModalComponent],
     imports: [
         CommonModule,
         // Forms
@@ -85,7 +86,9 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
         MatProgressBarModule,
         MatDialogModule,
         MatDatepickerModule,
-        AuthFormComponent
-    ]
+        AuthFormComponent,
+        BonusCollectModalComponent
+    ],
+    entryComponents: [BonusCollectModalComponent]
 })
 export class SharedModule {}

@@ -7,6 +7,7 @@ import * as authSelectors from '../auth/auth.selectors';
 import * as settingsSelectors from '../settings/settings.selectors';
 import { Authenticate, AuthedUser } from '../auth/auth.models';
 import { Language } from '../settings/settings.model';
+import { selectRouterState } from '../core.state';
 
 @Injectable({
     providedIn: 'root'
@@ -42,6 +43,11 @@ export class CoreFacade {
     }
     public selectUid$(): Observable<string> {
         return this.store.select(authSelectors.selectUid);
+    }
+
+    // Router Selectors
+    public selectRouterState$(): Observable<any> {
+        return this.store.select(selectRouterState);
     }
 
     // Settings Actions

@@ -1,0 +1,38 @@
+<div class="modal">
+    <div class="row">
+        <div class="bonus_seller"></div>
+    </div>
+    <h4 class="color-accent">Welcome, {{ data.name }}</h4>
+    <div class="row row--info">
+        <p>The world of [cryptoRTS] is a dangerous place! But, there are many treasures to be had if you can rise to the
+            challenge. You'll need to gather resources from the world to build up your city and amass an army, all the
+            while defending from enemy players.</p>
+        <p>The players that rise as champions will be rewarded with crypto riches! Here are some resources to get your
+            started. Building a 'House' is a wise first choice.</p>
+        <div class="row__cost">
+            <div class="user-resource">
+                <mat-icon>reorder</mat-icon>
+                <strong class="color-accent">{{ 789 | number }}</strong>
+                <small><i>sand</i></small>
+            </div>
+            <div class="user-resource">
+                <mat-icon>blur_on</mat-icon>
+                <strong class="color-accent">{{ 560 | number }}</strong>
+                <small><i>stone</i></small>
+            </div>
+            <div class="user-resource">
+                <mat-icon>waves</mat-icon>
+                <strong class="color-accent">{{ 1250 | number }}</strong>
+                <small><i>water</i></small>
+            </div>
+            <div class="user-resource">
+                <mat-icon>nature</mat-icon>
+                <strong class="color-accent">{{ 10569 | number }}</strong>
+                <small><i>wood</i></small>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions class="row row--actions">
+        <button mat-raised-button color="primary" [mat-dialog-close]="data.bonus" cdkFocusInitial>Collect</button>
+    </div>
+</div>

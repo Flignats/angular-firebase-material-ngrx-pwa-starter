@@ -37,20 +37,51 @@
     position: fixed;
     width: 100%;
     z-index: 10;
+
+    .mat-toolbar {
+        background-image: linear-gradient(#3a434b 60px, #181e23 60px);
+    }
 }
 
 .content {
     flex: 1 0 auto;
-    overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 9px;
+        height: 9px;
+        background-color: #3a434b;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #181e23;
+        background-clip: padding-box;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: #f6a623;
+    }
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: 1fr auto;
     grid-template-rows: 1fr 64px;
     grid-template-areas: "outlet sidebar" "footer sidebar";
     height: calc(100vh - 64px);
     margin-top: 64px;
+
+    &.grid-container--about {
+        grid-template-columns: 1fr 200px;
+    }
+    &.grid-container--home {
+        grid-template-columns: 1200px 1fr;
+    }
+    &.grid-container--settings {
+        grid-template-columns: 1fr 200px;
+    }
+    &.grid-container--world {
+        grid-template-columns: 1fr 200px;
+    }
 }
 
 .footer {
@@ -61,12 +92,178 @@
     padding: 0 15px;
     text-align: center;
     height: 60px;
+    overflow: hidden;
+
+    .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+        border: 1px solid transparent;
+        margin: 0 0.3em;
+        height: 38px;
+        width: auto;
+        
+        background-color: #181e23;
+        border-radius: 0 0 3px 3px;
+
+        &.active {
+            color: #f6a623;
+            border-left-color: #f6a623;
+            border-right-color: #f6a623;
+            border-bottom-color: #f6a623;
+        }
+    }
+
+    .mat-list-base {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
 }
 
 .sidebar { 
     background-color: #252c33;
     border-left: 4px solid #181e23;
-    grid-area: sidebar; 
+    grid-area: sidebar;
+
+    .sidebar__user-city {
+        box-sizing: border-box;
+        min-height: 150px;
+        min-width: 150px;
+        width: 100%;
+        background: rgba(0,0,0, 0.4);
+        border: 6px solid #181e23;
+        border-image: repeating-linear-gradient(45deg, rgba(246, 166, 35, 0.4), rgba(246, 166, 35, 0.4) 1px, #181e23 2px, #181e23 10px) 6;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > div {
+            box-sizing: border-box;
+            border: 2px solid rgba(246, 166, 35, 0.4);
+            height: 138px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        // TODO: Remove temp icon
+        .mat-icon { font-size: 72px; height: 72px; width: 72px; }
+    }
+
+    .sidebar__user-tasks {
+        .user-task {
+            background: rgba(0,0,0, 0.4);
+            box-sizing: border-box;
+            border: 2px solid #181e23;
+            width: 100%;
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            padding: 0.3em;
+            position: relative;
+
+            > div {
+                flex: 1;
+                position: relative;
+
+                div {
+                    position: absolute;
+                    z-index: 1;
+                    color: #181e23;
+                    font-size: 10px;
+                    text-align: center;
+                    top: 6px;
+                    font-weight: bold;
+                    left: 8px;
+                    font-style: italic;
+                }
+
+                .mat-progress-bar {
+                    height: 24px;
+                }
+            }
+
+            .mat-icon {
+                font-size: 24px;
+                height: 24px;
+                width: 24px;
+                position: relative;
+                top: 3px;
+                color: rgba(246, 166, 35, 0.4);
+                margin-right: 0.4em;
+            }
+        }
+    }
+
+    .sidebar__tabs {
+        .mat-tab-label {
+            height: auto;
+            padding: 0;
+            min-width: 0;
+        }
+
+        .user-resource {
+            background: rgba(0,0,0, 0.4);
+            box-sizing: border-box;
+            border: 2px solid #181e23;
+            width: 100%;
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            padding: 0.3em;
+            position: relative;
+
+            div {
+                color: #f6a623;
+                display: flex;
+
+                > div:first-child {
+                    font-weight: bold;
+                }
+                > div:nth-child(2) {
+                    color: #585f66;
+                    align-items: flex-end;
+                    font-style: italic;
+                    font-size: 11px;
+                }
+            }
+
+            .mat-icon {
+                font-size: 24px;
+                height: 24px;
+                width: 24px;
+                color: rgba(246, 166, 35, 0.4);
+                margin-right: 0.4em;
+            }
+        }
+    }
 }
 
 .outlet { grid-area: outlet; }
+
+::ng-deep {
+    .sidebar__user-tasks {
+        .user-task {
+            .mat-progress-bar.mat-accent .mat-progress-bar-buffer,
+            .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+                background-color: #252c33;
+            }
+        }
+    }
+
+    .sidebar__tabs {
+        margin-top : 4px;
+        .mat-tab-label {
+            background-color: #181e23;
+            height: auto;
+            padding: 0;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .mat-tab-group.mat-primary .mat-ink-bar,
+        .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+            background-color: #f6a623;
+        }
+    }
+}

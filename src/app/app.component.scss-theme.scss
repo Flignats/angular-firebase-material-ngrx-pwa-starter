@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@mixin cryptorts-app-component-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    .color-accent {
+        color: mat-color($accent);
+    }
+    .color-accent-darker {
+        color: mat-color($accent, darker);
+    }
+    .color-primary {
+        color: mat-color($primary);
+    }
+    .color-success {
+        color: mat-color($colors-success);
+    }
+    .color-warn {
+        color: mat-color($warn);
+    }
+}

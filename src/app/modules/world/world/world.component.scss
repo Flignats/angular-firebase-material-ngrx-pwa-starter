@@ -1,0 +1,159 @@
+.sprite {
+    position: relative;
+    transition: transform .5s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        z-index: 999;
+    }
+}
+
+.world-node--city {width:76px; height:100px; background-position: -977px -733px}
+.world-node--sand {width:76px; height:100px; background-position: -977px -835px}
+.world-node--stone {width:76px; height:100px; background-position: -1055px -733px}
+.world-node--water {width:76px; height:100px; background-position: -1055px -835px}
+.world-node--wood {width:76px; height:100px; background-position: -1099px -1px}
+
+.world {
+    width: 2100px;
+    height: 1500px;
+    background-image: url('../../../../assets/world/world_bg_asphalt.png');
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 18px;
+}
+
+.world-node {
+    height: 100px;
+    width: 76px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:nth-child(n+28) {
+        position: relative;
+        left: 38px;
+        top: -34px;
+    }
+
+    &:nth-child(n+55) {
+        position: relative;
+        left: 0;
+        top: -68px;
+    }
+
+    &:nth-child(n+82) {
+        position: relative;
+        left: 38px;
+        top: -102px;
+    }
+
+    &:nth-child(n+109) {
+        position: relative;
+        left: 0;
+        top: -136px;
+    }
+
+    &:nth-child(n+136) {
+        position: relative;
+        left: 38px;
+        top: -170px;
+    }
+
+    &:nth-child(n+163) {
+        position: relative;
+        left: 0;
+        top: -204px;
+    }
+
+    &:nth-child(n+190) {
+        position: relative;
+        left: 38px;
+        top: -238px;
+    }
+
+    &:nth-child(n+217) {
+        position: relative;
+        left: 0;
+        top: -272px;
+    }
+
+    &:nth-child(n+244) {
+        position: relative;
+        left: 38px;
+        top: -306px;
+    }
+
+    &:nth-child(n+271) {
+        position: relative;
+        left: 0;
+        top: -340px;
+    }
+
+    &:nth-child(n+298) {
+        position: relative;
+        left: 38px;
+        top: -374px;
+    }
+
+    &:nth-child(n+325) {
+        position: relative;
+        left: 0;
+        top: -408px;
+    }
+
+    &:nth-child(n+352) {
+        position: relative;
+        left: 38px;
+        top: -442px;
+    }
+
+    &:nth-child(n+379) {
+        position: relative;
+        left: 0;
+        top: -476px;
+    }
+
+    &:nth-child(n+406) {
+        position: relative;
+        left: 38px;
+        top: -510px;
+    }
+
+    &:nth-child(n+433) {
+        position: relative;
+        left: 0;
+        top: -544px;
+    }
+
+    &:nth-child(n+460) {
+        position: relative;
+        left: 38px;
+        top: -578px;
+    }
+
+    &:nth-child(n+487) {
+        position: relative;
+        left: 0;
+        top: -612px;
+    }
+
+    &:nth-child(n+514) {
+        position: relative;
+        left: 38px;
+        top: -646px;
+    }
+
+    &:nth-child(n+541) {
+        position: relative;
+        left: 0;
+        top: -680px;
+    }
+
+    &:nth-child(n+568) {
+        position: relative;
+        left: 38px;
+        top: -714px;
+    }
+}

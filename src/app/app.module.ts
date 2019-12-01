@@ -36,6 +36,7 @@ import { SettingsEffects } from './core/settings/settings.effects';
 
 // Joyride
 import { JoyrideModule } from 'ngx-joyride';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [AppComponent],
@@ -71,7 +72,13 @@ import { JoyrideModule } from 'ngx-joyride';
         EffectsModule.forRoot([AuthEffects, SettingsEffects, GoogleAnalyticsEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, name: 'cryptorts' })
     ],
-    providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
+    providers: [
+        { provide: RouterStateSerializer, useClass: CustomSerializer },
+        {
+            provide: MAT_DIALOG_DEFAULT_OPTIONS,
+            useValue: { hasBackdrop: true, closeOnNavigation: false, disableClose: true, panelClass: 'default-theme' }
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

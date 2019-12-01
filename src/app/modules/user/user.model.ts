@@ -7,7 +7,7 @@ export interface IUser {
     displayName?: string;
     email: string;
     fcmTokens?: { [token: string]: true };
-    shield?: {
+    shield: {
         active: boolean;
         activatedAt?: Timestamp,
         expiresAt?: Timestamp,
