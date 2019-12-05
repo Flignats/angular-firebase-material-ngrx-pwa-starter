@@ -17,9 +17,10 @@ export class BuildingComponent implements OnInit {
 
     public classStyler(building) {
         const classes = {
-            ['home_node_build']: building.type === 'empty',
-            ['home_node_lock']: building.type === 'locked',
-            ['home_node_main']: building.type === 'main'
+            ['home_node_build']: building.status === 'empty',
+            ['home_node_lock']: building.status === 'locked',
+            ['home_node_main']: building.buildingId === 'keep',
+            ['home_1']: building.buildingId === 'house' && building.status !== 'construction',
         };
 
         return classes;

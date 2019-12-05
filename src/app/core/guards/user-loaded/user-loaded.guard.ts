@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable, Subscription, of } from 'rxjs';
 import { filter, map, take, tap } from 'rxjs/operators';
-import { UserFacade } from '@app/core/facades/user.facade';
+import { UserFacade } from '@app/modules/user/user.facade';
 
 @Injectable({
     providedIn: 'root'

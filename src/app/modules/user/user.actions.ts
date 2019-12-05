@@ -26,3 +26,31 @@ export const triggerLoadStatusSetDisplayNameFailure = createAction(
     '[User] Trigger: Load Set Display Name Status => Failure',
     props<{ error: any }>()
 );
+
+/**
+ * Trigger: Build
+ */
+export const triggerBuild = createAction(
+    '[User] Trigger: Build => Initiated',
+    props<{ buildingId: string; level: number; node: number }>()
+);
+export const triggerBuildFailure = createAction('[User] Trigger: Build => Failure', props<{ error: any }>());
+export const triggerLoadStatusBuild = createAction('[User] Trigger: Build Status');
+export const triggerLoadStatusBuildSuccess = createAction(
+    '[User] Trigger: Build Status => Success',
+    props<{ triggerStatus: any }>()
+);
+
+/**
+ * Trigger: Collect Bonus
+ */
+export const triggerCompleteTourStep = createAction('[User] Trigger: Complete Tour Step => Initiated', props<{ id: string }>());
+export const triggerCompleteTourStepFailure = createAction(
+    '[User] Trigger: Complete Tour Step => Failure',
+    props<{ error: any }>()
+);
+export const triggerLoadStatusCompleteTourStep = createAction('[User] Trigger: Load Complete Tour Step Status');
+export const triggerLoadStatusCompleteTourStepSuccess = createAction(
+    '[User] Trigger: Load Complete Tour Step Status => Success',
+    props<{ triggerStatus: any }>()
+);

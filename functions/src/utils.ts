@@ -9,6 +9,11 @@ export const API_URLS = {
     buildings: 'buildings',
     displayNames: 'displayNames',
     users: 'users',
+    userTasks: 'userTasks',
+    user: (uid: string) => `${API_URLS.users}/${uid}`,
+    userCity: (uid: string) => `userCities/${uid}`,
+    userQuest: (uid: string) => `userQuests/${uid}`,
+    userTriggerStatus: (uid: string, trigger: string) => `${API_URLS.users}/${uid}/triggersStatus/${trigger}`
 };
 
 // async function createSeed() {
@@ -135,3 +140,22 @@ export async function getUserFromDisplayName(name: string) {
 //     while (tmp.length) cache.push(tmp.splice(0, chunkSize))
 //     return cache
 // }
+
+// Converts numbers <==> letters
+// https://stackoverflow.com/questions/11089399/count-with-a-b-c-d-instead-of-0-1-2-3-with-javascript/11090169#11090169
+export function fromLetters(str: string): number {
+    const len = str.length;
+    let out = 0;
+    let pos = len;
+    while (--pos > -1) {
+        out += (str.charCodeAt(pos) - 64) * Math.pow(26, len - 1 - pos);
+    }
+    return out;
+}
+export function toLetters(num: number): string {
+    const mod = num % 26;
+    let pow = num / 26 | 0;
+    // tslint:disable-next-line: ban-comma-operator
+    const out = mod ? String.fromCharCode(64 + mod) : (--pow, 'Z');
+    return pow ? toLetters(pow) + out : out;
+}

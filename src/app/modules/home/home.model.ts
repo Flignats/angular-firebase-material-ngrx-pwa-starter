@@ -1,8 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Timestamp } from '@firebase/firestore-types';
 
-export type BuildingTypes = 'empty' | 'main';
-
 export interface IHomeTriggers {
     upgradeNode: {
         action?: string;
@@ -15,16 +13,32 @@ export interface IHomeTriggers {
 
 export interface IBuildings {
     createdAt: Timestamp;
+    hasCreatedFirstBuilding: boolean;
     nodes: INodes;
     uid: string;
     updatedAt: Timestamp;
 }
 
+export type BuildingIds =
+    | 'arsenal'
+    | 'assembly'
+    | 'barracks'
+    | 'flight_tower'
+    | 'furnace'
+    | 'house'
+    | 'keep'
+    | 'thinktank'
+    | 'warehouse'
+    | 'watchtower';
+
+export type BuildingStatus = 'construction' | 'empty' | 'locked' | 'occupied';
+
 export interface INodes {
     [key: string]: {
+        buildingId: BuildingIds;
         level: number;
         node: number;
-        type: BuildingTypes;
+        status: BuildingStatus;
     };
 }
 

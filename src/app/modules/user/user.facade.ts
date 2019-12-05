@@ -1,10 +1,9 @@
-import { IUser, IUserTriggers } from './../../modules/user/user.model';
+import { IUser, IUserTriggers } from './user.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { loadUser, triggerSetDisplayName } from '@app/modules/user/user.actions';
+import { loadUser, triggerSetDisplayName, triggerBuild, triggerCompleteTourStep } from '@app/modules/user/user.actions';
 import { selectUserAccount, selectUserLoading, selectUserTriggers } from '@app/modules/user/user.selectors';
-import { ITriggers } from '../models/triggers.models';
 
 @Injectable({
     providedIn: 'root'
@@ -19,6 +18,14 @@ export class UserFacade {
 
     public setDisplayName(displayName: string) {
         this.store.dispatch(triggerSetDisplayName({ displayName }));
+    }
+
+    public triggerBuild(buildingId: string, level: number, node: number) {
+        this.store.dispatch(triggerBuild({ buildingId, level, node }));
+    }
+
+    public triggerCompleteTourStep(id: string) {
+        this.store.dispatch(triggerCompleteTourStep({ id }));
     }
 
     // Selectors

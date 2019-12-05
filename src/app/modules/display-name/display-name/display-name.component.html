@@ -17,7 +17,7 @@
                 <button type="submit" mat-raised-button color="primary"
                     [disabled]="displayNameForm.invalid || (triggers$ | async)?.setDisplayName">Submit</button>
             </p>
-            <div *ngIf="(triggers$ | async)?.setDisplayName.success">
+            <div *ngIf="(triggers$ | async)?.setDisplayName?.success">
                 <p>Let's begin your journey...</p>
                 <button type="button" mat-raised-button color="accent" (click)="onGoHome()">Continue</button>
             </div>

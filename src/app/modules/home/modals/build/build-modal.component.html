@@ -1,32 +1,129 @@
 <div class="modal">
+    <button mat-dialog-close class="dialog-close">&times;</button>
     <div class="row">
-        <div class="cell cell--home" [ngClass]="{'selected': selections.house.active}" (click)="onSelectBuilding('house')"></div>
-        <div class="cell cell--barracks" [ngClass]="{'selected': selections.barracks_resource.active}" (click)="onSelectBuilding('barracks_resource')"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+        <div class="cell" [ngClass]="{'selected': selections.house.active}" (click)="onSelectBuilding('house')">
+            <span class="sprite sprite-main icon_house"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_worker.active}"
+            (click)="onSelectBuilding('barracks_worker')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_barracks_worker"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_soldier.active}"
+            (click)="onSelectBuilding('barracks_soldier')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_barracks_swords"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_archer.active}"
+            (click)="onSelectBuilding('barracks_archer')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_barracks_ranged"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_magic.active}"
+            (click)="onSelectBuilding('barracks_magic')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_barracks_magic"></span>
+        </div>
     </div>
     <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.arsenal.active}"
+            (click)="onSelectBuilding('arsenal')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_arsenal"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.assembly.active}"
+            (click)="onSelectBuilding('assembly')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_assembly"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.flight_tower.active}"
+            (click)="onSelectBuilding('flight_tower')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_flight_tower"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.furnace.active}"
+            (click)="onSelectBuilding('furnace')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_furnace"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.research.active}"
+            (click)="onSelectBuilding('research')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_think_tank"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.warehouse.active}"
+            (click)="onSelectBuilding('warehouse')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_warehouse"></span>
+        </div>
+        <div class="cell cell--locked" [ngClass]="{'selected': selections.watchtower.active}"
+            (click)="onSelectBuilding('watchtower')">
+            <span class="cell-lock">
+                <mat-icon>lock</mat-icon>
+            </span>
+            <span class="sprite sprite-main icon_watchtower"></span>
+        </div>
     </div>
     <div class="row row--info">
         <p *ngIf="!selected">Select a building from above.</p>
         <ng-container *ngIf="selected">
-                <h4>{{ selected.title }}</h4>
-                <p>{{ selected.description }}</p>
-                <div class="row__cost">
-                    ...Unit Cost...
-                </div>
+            <h4>{{ selected.title }}</h4>
+            <p>{{ selected.description }}</p>
+            <div class="row__cost">
+                <ul class="unit-costs">
+                    <li class="resource">
+                        <mat-icon class="color-accent">people</mat-icon>
+                        <div>{{ buildings[selected.id]['a'].people }}</div>
+                    </li>
+                    <li class="resource">
+                        <mat-icon class="color-accent">reorder</mat-icon>
+                        <div>{{ buildings[selected.id]['a'].sand }}</div>
+                    </li>
+                    <li class="resource">
+                        <mat-icon class="color-accent">blur_on</mat-icon>
+                        <div>{{ buildings[selected.id]['a'].stone }}</div>
+                    </li>
+                    <li class="resource">
+                        <mat-icon class="color-accent">waves</mat-icon>
+                        <div>{{ buildings[selected.id]['a'].water }}</div>
+                    </li>
+                    <li class="resource">
+                        <mat-icon class="color-accent">nature</mat-icon>
+                        <div>{{ buildings[selected.id]['a'].wood }}</div>
+                    </li>
+                </ul>
+            </div>
         </ng-container>
+    </div>
+    <div mat-dialog-actions class="row row--actions">
+        <div>
+            <mat-icon>money</mat-icon>
+            <button mat-flat-button color="primary" [mat-dialog-close]="payload">Buy Now</button>
+        </div>
+        <div>
+            <mat-icon>timer</mat-icon>
+            <span class="color-accent">~{{ (buildings[selected.id]['a']['buildTime'] * 1000) | date:'H:mm:ss':'UTC'}}</span>
+            <button mat-raised-button color="accent" [mat-dialog-close]="payload" cdkFocusInitial>Build</button>
+        </div>
     </div>
 </div>

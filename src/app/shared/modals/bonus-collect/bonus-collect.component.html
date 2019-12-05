@@ -12,27 +12,27 @@
         <div class="row__cost">
             <div class="user-resource">
                 <mat-icon>reorder</mat-icon>
-                <strong class="color-accent">{{ 789 | number }}</strong>
+                <strong class="color-accent">{{ payload.data.bonus.sand | number }}</strong>
                 <small><i>sand</i></small>
             </div>
             <div class="user-resource">
                 <mat-icon>blur_on</mat-icon>
-                <strong class="color-accent">{{ 560 | number }}</strong>
+                <strong class="color-accent">{{ payload.data.bonus.stone | number }}</strong>
                 <small><i>stone</i></small>
             </div>
             <div class="user-resource">
                 <mat-icon>waves</mat-icon>
-                <strong class="color-accent">{{ 1250 | number }}</strong>
+                <strong class="color-accent">{{ payload.data.bonus.water | number }}</strong>
                 <small><i>water</i></small>
             </div>
             <div class="user-resource">
                 <mat-icon>nature</mat-icon>
-                <strong class="color-accent">{{ 10569 | number }}</strong>
+                <strong class="color-accent">{{ payload.data.bonus.wood | number }}</strong>
                 <small><i>wood</i></small>
             </div>
         </div>
     </div>
     <div mat-dialog-actions class="row row--actions">
-        <button mat-raised-button color="primary" [mat-dialog-close]="data.bonus" cdkFocusInitial>Collect</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="payload" cdkFocusInitial>Collect</button>
     </div>
 </div>

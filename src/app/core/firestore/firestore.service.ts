@@ -1,5 +1,5 @@
+import { IUserQuests } from '@app/core/models/game-data/user-quests.model';
 import { IUser } from './../../modules/user/user.model';
-import { loadUser } from './../../modules/user/user.actions';
 import { Injectable } from '@angular/core';
 import {
     AngularFirestore,
@@ -81,9 +81,77 @@ export class FirestoreService {
         return this.doc$('userCities/' + uid);
     }
 
+    // Quests
+    public loadUserQuests(uid: any): Observable<IUserQuests> {
+        return this.doc$('userQuests/' + uid);
+    }
+
     // User
     public loadUser(uid: any): Observable<IUser> {
         return this.doc$('users/' + uid);
+    }
+
+    // User: Trigger Build
+    public getTriggerStatusBuild(uid) {
+        return this.doc$('users/' + uid + '/triggersStatus/build');
+    }
+    public triggerBuild(uid: string, buildingId: string, level: number, node: number, hasCreatedFirstBuilding: boolean) {
+        const batch                 = firebase.firestore().batch();
+        const timestamp             = this.timestamp;
+
+        const triggerDocRef         = firebase.firestore().doc('users/' + uid + '/triggers/build');
+        const triggerStatusDocRef   = firebase.firestore().doc('users/' + uid + '/triggersStatus/build');
+
+        batch.set(triggerDocRef, {
+            action: 'Setting up build...',
+            buildingId,
+            createdAt: timestamp,
+            hasCreatedFirstBuilding,
+            level,
+            node,
+            uid,
+        });
+
+        batch.set(triggerStatusDocRef, {
+            action: 'Setting up build...',
+            buildingId,
+            createdAt: timestamp,
+            level,
+            node,
+            pending: true,
+            uid,
+        });
+
+        return from(batch.commit());
+    }
+
+    // User: Trigger Complete Tour Step
+    public getTriggerStatusCompleteTourStep(uid) {
+        return this.doc$('users/' + uid + '/triggersStatus/tour');
+    }
+    public triggerCompleteTourStep(uid: string, bonusId: string) {
+        const batch                 = firebase.firestore().batch();
+        const timestamp             = this.timestamp;
+
+        const triggerDocRef         = firebase.firestore().doc('users/' + uid + '/triggers/tour');
+        const triggerStatusDocRef   = firebase.firestore().doc('users/' + uid + '/triggersStatus/tour');
+
+        batch.set(triggerDocRef, {
+            action: 'Completing tour step',
+            createdAt: timestamp,
+            id: bonusId,
+            uid,
+        });
+
+        batch.set(triggerStatusDocRef, {
+            action: 'Completing tour step',
+            createdAt: timestamp,
+            id: bonusId,
+            pending: true,
+            uid,
+        });
+
+        return from(batch.commit());
     }
 
     // User: Trigger Set Display Name
@@ -91,11 +159,11 @@ export class FirestoreService {
         return this.doc$('users/' + uid + '/triggersStatus/setDisplayName');
     }
     public triggerSetDisplayName(uid: string, name) {
-        const batch = firebase.firestore().batch();
-        const timestamp = this.timestamp;
+        const batch                 = firebase.firestore().batch();
+        const timestamp             = this.timestamp;
 
-        const triggerDocRef = firebase.firestore().doc('users/' + uid + '/triggers/setDisplayName');
-        const triggerStatusDocRef = firebase.firestore().doc('users/' + uid + '/triggersStatus/setDisplayName');
+        const triggerDocRef         = firebase.firestore().doc('users/' + uid + '/triggers/setDisplayName');
+        const triggerStatusDocRef   = firebase.firestore().doc('users/' + uid + '/triggersStatus/setDisplayName');
 
         batch.set(triggerDocRef, {
             createdAt: timestamp,

@@ -1,0 +1,30 @@
+<!-- Triggers -->
+<app-trigger-status
+    *ngIf="!triggers || (!triggers.build?.pending && !triggers.tour?.pending && !triggers.setDisplayName?.pending)"
+    [icon]="'sync_alt'" [defaultActionText]="'Trigger action'">
+</app-trigger-status>
+
+<app-trigger-status *ngIf="triggers?.build?.pending" [icon]="'sync_alt'" [defaultActionText]="'Setting up build...'"
+    [trigger]="triggers.build" [mode]="'indeterminate'">
+</app-trigger-status>
+
+<app-trigger-status *ngIf="triggers?.tour?.pending" [icon]="'sync_alt'"
+    [defaultActionText]="'Completing tour step..'" [trigger]="triggers.tour" [mode]="'indeterminate'">
+</app-trigger-status>
+
+<app-trigger-status *ngIf="triggers?.setDisplayName?.pending" [icon]="'sync_alt'"
+    [defaultActionText]="'Setting display name...'" [trigger]="triggers.setDisplayName" [mode]="'indeterminate'">
+</app-trigger-status>
+
+<!-- Building -->
+<app-trigger-status [icon]="'build'" [defaultActionText]="'Add a Building Task'" [mode]="'determinate'">
+</app-trigger-status>
+
+<!-- Research -->
+<app-trigger-status [icon]="'polymer'" [defaultActionText]="'Add a Research Task'" [mode]="'determinate'">
+</app-trigger-status>
+
+<!-- Training -->
+<app-trigger-status [icon]="'transfer_within_a_station'" [defaultActionText]="'Add a Training Task'"
+    [mode]="'determinate'">
+</app-trigger-status>

@@ -1,0 +1,34 @@
+.user-resource {
+    background: rgba(0,0,0, 0.4);
+    box-sizing: border-box;
+    border: 2px solid #181e23;
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0.3em;
+    position: relative;
+
+    div {
+        color: #f6a623;
+        display: flex;
+
+        > div:first-child {
+            font-weight: bold;
+        }
+        > div:nth-child(2) {
+            color: #585f66;
+            align-items: flex-end;
+            font-style: italic;
+            font-size: 11px;
+        }
+    }
+
+    .mat-icon {
+        font-size: 24px;
+        height: 24px;
+        width: 24px;
+        color: rgba(246, 166, 35, 0.4);
+        margin-right: 0.4em;
+    }
+}

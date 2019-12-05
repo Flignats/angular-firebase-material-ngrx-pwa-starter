@@ -1,6 +1,6 @@
 import { HomeFacade } from '@app/core/facades/home.facade';
 import { Observable } from 'rxjs';
-import { UserFacade } from '@app/core/facades/user.facade';
+import { UserFacade } from '@app/modules/user/user.facade';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CoreFacade } from '@app/core/facades/core.facade';
 import { IUser } from '@app/modules/user/user.model';
@@ -8,6 +8,8 @@ import { IBuildings } from '../home.model';
 import { MatDialog } from '@angular/material/dialog';
 import { BuildModalComponent } from '../modals/build/build-modal.component';
 import { BonusCollectModalComponent } from '@app/shared/modals/bonus-collect/bonus-collect.component';
+import { BasicModalComponent } from '@app/shared/modals/basic/basic.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -19,13 +21,12 @@ export class HomeComponent implements OnInit {
     public user$: Observable<IUser>;
     public userBuildings$: Observable<IBuildings>;
 
-    animal: any;
-
     constructor(
         public dialog: MatDialog,
         private coreFacade: CoreFacade,
         private homeFacade: HomeFacade,
         private userFacade: UserFacade,
+        private router: Router,
     ) {}
 
     public ngOnInit() {
@@ -33,47 +34,81 @@ export class HomeComponent implements OnInit {
         this.userBuildings$ = this.homeFacade.selectUserBuildings$();
     }
 
+    // Used to open from building cell
     public onModalOpen(node) {
-        if (node.type === 'empty') {
-            const options = {
-                width: 'auto',
-                data: { name: 'MODAL NAME', animal: 'ANIMAL!' }
-            };
+        const options = {
+            width: 'auto',
+            data: undefined
+        };
+        if (node.status === 'empty') {
+            options.data = { name: 'MODAL NAME', animal: 'ANIMAL!', node: node.node };
             this.openModal(BuildModalComponent, options);
         }
     }
 
+    // Tour Events
     public onNewPlayerBonus(displayName) {
+        // exit if the new player bonus modal is already open
         const dialogExists = this.dialog.openDialogs.find(matDialog => matDialog.id === 'modal-new-player');
-        if (dialogExists) { return true; }
+        if (dialogExists) {
+            return true;
+        }
+
         const options = {
             width: 'auto',
-            data: { name: displayName, bonus: {
-                sand: 500,
-                stone: 200,
-                water: 350,
-                wood: 600
-            }},
+            data: {
+                name: displayName,
+                bonus: {
+                    id: 'new_player_bonus',
+                    sand: 500,
+                    stone: 200,
+                    water: 350,
+                    wood: 600
+                }
+            },
             id: 'modal-new-player'
         };
 
         this.openModal(BonusCollectModalComponent, options);
     }
+    public onTourQuestsIntro() {
+        // exit if the new player bonus modal is already open
+        const modalId = 'modal-quests-intro';
+        const dialogExists = this.dialog.openDialogs.find(matDialog => matDialog.id === modalId);
+        if (dialogExists) {
+            return true;
+        }
+
+        const options = {
+            width: 'auto',
+            data: {
+                description:
+                    // tslint:disable-next-line: max-line-length
+                    'Quests guide you along specific tasks that must be accomplished to play the game and provide rewards. Next Step: Collect your first quest reward',
+                headline: 'Quests Intro',
+                id: modalId,
+                name: 'Quests Intro',
+                submit_text: 'Go To Quests'
+            },
+            id: modalId
+        };
+
+        this.openModal(BasicModalComponent, options);
+    }
 
     private openModal(component, options) {
-        // const dialogRef = this.dialog.open(BuildModalComponent, {
-        //     width: '966px',
-        //     data: { name: 'MODAL NAME', animal: 'ANIMAL!' }
-        // });
-        // dialogRef.afterClosed().subscribe(result => {
-        //     console.log('The dialog was closed:::', this.animal);
-        //     this.animal = result;
-        // });
-
         const dialogRef = this.dialog.open(component, options);
-        dialogRef.afterClosed().subscribe(result => {
-            this.animal = result;
-            console.log('The dialog was closed:::', this.animal);
+        dialogRef.afterClosed().subscribe(data => {
+            if (!data) {
+                return;
+            }
+            if (data.submit.id === 'new_player_bonus') {
+                this.userFacade.triggerCompleteTourStep(data.submit.id);
+            } else if (data.submit.id === 'building_new') {
+                this.userFacade.triggerBuild(data.submit.buildingId, data.submit.level, data.submit.node);
+            } else if (data.submit.id === 'modal-quests-intro') {
+                this.router.navigate(['/quests']);
+            }
         });
     }
 }

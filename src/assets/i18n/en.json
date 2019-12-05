@@ -2,6 +2,7 @@
     "navigation.about": "About",
     "auth.resetPassword": "Reset Password",
     "navigation.home": "Home",
+    "navigation.quests": "Quests",
     "navigation.settings": "Settings",
     "navigation.world": "World"
 }

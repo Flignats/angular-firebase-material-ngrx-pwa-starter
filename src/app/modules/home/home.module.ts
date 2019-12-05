@@ -7,18 +7,17 @@ import { HomeEffects } from './home.effects';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'app/shared/shared.module';
-import { TourComponent } from './tour/tour.component';
 // Joyride
 import { JoyrideModule } from 'ngx-joyride';
 import { BuildingComponent } from './building/building.component';
 import { BuildModalComponent } from './modals/build/build-modal.component';
 
 @NgModule({
-    declarations: [HomeComponent, TourComponent, BuildingComponent, BuildModalComponent],
+    declarations: [HomeComponent, BuildingComponent, BuildModalComponent],
     imports: [
         CommonModule,
         SharedModule,
-        HomeRoutingModule,
+        // HomeRoutingModule,
         JoyrideModule.forChild(),
         StoreModule.forFeature(FEATURE_NAME, reducers),
         EffectsModule.forFeature([HomeEffects])

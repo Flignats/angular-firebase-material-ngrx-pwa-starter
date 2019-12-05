@@ -1,3 +1,4 @@
+import { HomeModule } from './../modules/home/home.module';
 // Angular
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,11 +16,12 @@ import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { SharedModule } from '../shared/shared.module';
 import { TitleService } from './title/title.service';
 import { LocalStorageService } from './local-storage/local-storage.service';
+
 import { UserModule } from '@app/modules/user/user.module';
 
 @NgModule({
     declarations: [],
-    imports: [CommonModule, HttpClientModule, SharedModule, UserModule],
+    imports: [CommonModule, HttpClientModule, SharedModule, UserModule, HomeModule],
     providers: [
         FirestoreService,
         NotificationService,

@@ -1,5 +1,6 @@
 import * as admin from 'firebase-admin';
 import * as buildingsFunctions from '../buildings';
+import * as buildFunctions from '../build';
 
 const firestoreInstance = admin.firestore();
 
@@ -25,7 +26,7 @@ export async function onTaskRunnerTriggered(context: any) {
 
             // Update doc with status on success or error
             .then(() => snapshot.ref.update({ status: 'complete' }))
-            .catch(err => snapshot.ref.update({ status: 'error' }));
+            .catch(err => snapshot.ref.update({ status: err }));
 
         jobs.push(job);
     });
@@ -42,5 +43,6 @@ interface Workers {
 // Business logic for named tasks. Function name should match worker field on task document.
 const workers: Workers = {
     helloWorld: () => firestoreInstance.collection('logs').add({ hello: 'world' }),
+    onCompleteBuild: (data) => buildFunctions.onCompleteBuild(data),
     onSetBuildingsTriggered: (context) => buildingsFunctions.onSetBuildingsTriggered(undefined, context)
 };

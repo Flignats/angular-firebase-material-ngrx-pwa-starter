@@ -1,4 +1,4 @@
-import { UserFacade } from './../../../core/facades/user.facade';
+import { UserFacade } from '../../user/user.facade';
 import { Component, ChangeDetectionStrategy, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { DisplayNameValidator } from '@app/shared/validators';

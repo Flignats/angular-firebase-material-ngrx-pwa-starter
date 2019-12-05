@@ -1,0 +1,4 @@
+<app-quest-card
+    *ngFor="let quest of (userQuests$ | async)?.quests | keyvalue"
+    [quest]="quest"
+></app-quest-card>

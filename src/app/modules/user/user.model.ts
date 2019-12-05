@@ -1,20 +1,54 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Timestamp } from '@firebase/firestore-types';
-import { ITriggers } from '@app/core/models/triggers.models';
+import { ITriggerDetails } from '@app/core/models/triggers.models';
 
 export interface IUser {
     createdAt: Timestamp;
-    displayName?: string;
+    displayName: string;
     email: string;
     fcmTokens?: { [token: string]: true };
+    resources: IUserResources;
     shield: {
         active: boolean;
         activatedAt?: Timestamp,
         expiresAt?: Timestamp,
     };
-    tours?: IUserTours;
+    tasks: IUserTasks;
+    tours: IUserTours;
     uid: string;
-    updatedAt?: Timestamp;
+    updatedAt: Timestamp;
+}
+
+export interface IUserResources {
+    population: {
+        available: number;
+        unavailable: number;
+    };
+    sand: number;
+    stone: number;
+    water: number;
+    wood: number;
+}
+
+export interface IUserTasks {
+    build: {
+        action: string;
+        active: boolean;
+        completesAt: Timestamp;
+        startedAt: Timestamp;
+    };
+    research: {
+        action: string;
+        active: boolean;
+        completesAt: Timestamp;
+        startedAt: Timestamp;
+    };
+    train: {
+        action: string;
+        active: boolean;
+        completesAt: Timestamp;
+        startedAt: Timestamp;
+    };
 }
 
 export interface IUserTours {
@@ -22,13 +56,9 @@ export interface IUserTours {
 }
 
 export interface IUserTriggers {
-    setDisplayName: {
-        action?: string;
-        pending?: boolean;
-        error?: HttpErrorResponse | string;
-        success?: boolean;
-        successMsg?: string;
-    };
+    build: ITriggerDetails;
+    setDisplayName: ITriggerDetails;
+    tour: ITriggerDetails;
 }
 
 export interface UserStateDetails {

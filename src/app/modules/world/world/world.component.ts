@@ -36,11 +36,11 @@ export class WorldComponent implements OnInit {
 
     public classStyler(node) {
         const classes = {
-            ['world-node--city']: node.type === 'city',
-            ['world-node--sand']: node.type === 'sand',
-            ['world-node--stone']: node.type === 'stone',
-            ['world-node--water']: node.type === 'water',
-            ['world-node--wood']: node.type === 'wood',
+            ['world_tile_city']: node.type === 'city',
+            ['world_tile_sand']: node.type === 'sand',
+            ['world_tile_stone']: node.type === 'stone',
+            ['world_tile_water']: node.type === 'water',
+            ['world_tile_wood']: node.type === 'wood',
         };
 
         return classes;

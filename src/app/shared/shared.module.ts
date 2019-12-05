@@ -26,13 +26,25 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 
-
 // Components
-import { AuthFormComponent } from './auth-form/auth-form.component';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { BonusCollectModalComponent } from './modals/bonus-collect/bonus-collect.component';
+import { TriggerStatusComponent } from './components/trigger-status/trigger-status.component';
+import { TriggersListComponent } from './components/triggers-list/triggers-list.component';
+import { TourComponent } from './components/tour/tour.component';
+import { BasicModalComponent } from './modals/basic/basic.component';
+import { UserResourcesComponent } from './components/user-resources/user-resources.component';
 
 @NgModule({
-    declarations: [AuthFormComponent, BonusCollectModalComponent],
+    declarations: [
+        AuthFormComponent,
+        BonusCollectModalComponent,
+        UserResourcesComponent,
+        TourComponent,
+        TriggerStatusComponent,
+        TriggersListComponent,
+        BasicModalComponent
+    ],
     imports: [
         CommonModule,
         // Forms
@@ -87,8 +99,13 @@ import { BonusCollectModalComponent } from './modals/bonus-collect/bonus-collect
         MatDialogModule,
         MatDatepickerModule,
         AuthFormComponent,
-        BonusCollectModalComponent
+        UserResourcesComponent,
+        TourComponent,
+        TriggersListComponent,
+        TriggerStatusComponent,
+        BonusCollectModalComponent,
+        BasicModalComponent
     ],
-    entryComponents: [BonusCollectModalComponent]
+    entryComponents: [BonusCollectModalComponent, BasicModalComponent]
 })
 export class SharedModule {}

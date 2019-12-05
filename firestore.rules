@@ -10,6 +10,14 @@ service cloud.firestore {
                 allow read: if request.auth.uid == userId;
             }
 
+            match /userQuests/{userId} {
+                allow read: if request.auth.uid == userId;
+            }
+
+            match /userTasks/{userId} {
+                allow create, update: if request.auth.uid == userId;
+            }
+
             match /users/{userId} {
                 allow read: if request.auth.uid == userId;
             }

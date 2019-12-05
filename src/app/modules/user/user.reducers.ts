@@ -6,7 +6,11 @@ export const initialState: UserStateDetails = {
     error: undefined,
     loading: false,
     account: undefined,
-    triggers: undefined
+    triggers: {
+        build: undefined,
+        setDisplayName: undefined,
+        tour: undefined,
+    },
 };
 
 const featureReducer = createReducer(
@@ -33,7 +37,7 @@ const featureReducer = createReducer(
                 pending: true,
                 error: undefined,
                 success: undefined,
-                successMsg: undefined,
+                successMsg: undefined
             }
         }
     })),
@@ -43,7 +47,7 @@ const featureReducer = createReducer(
             ...state.triggers,
             setDisplayName: {
                 pending: false,
-                error,
+                error
             }
         }
     })),
@@ -53,18 +57,85 @@ const featureReducer = createReducer(
             ...state.triggers,
             setDisplayName: {
                 pending: false,
-                error,
+                error
             }
         }
     })),
     on(userActions.triggerLoadStatusSetDisplayNameSuccess, (state, { triggerStatus }) => ({
         ...state,
         triggers: {
+            ...state.triggers,
             setDisplayName: {
                 ...triggerStatus
             }
         }
     })),
+    // Trigger: Build
+    on(userActions.triggerBuild, state => ({
+        ...state,
+        triggers: {
+            ...state.triggers,
+            build: {
+                action: userActions.triggerBuild.type,
+                pending: true,
+                error: undefined,
+                success: undefined,
+                successMsg: undefined
+            }
+        }
+    })),
+    on(userActions.triggerBuildFailure, (state, { error }) => ({
+        ...state,
+        triggers: {
+            ...state.triggers,
+            build: {
+                pending: false,
+                error
+            }
+        }
+    })),
+    on(userActions.triggerLoadStatusBuildSuccess, (state, { triggerStatus }) => ({
+        ...state,
+        triggers: {
+            ...state.triggers,
+            build: {
+                ...triggerStatus
+            }
+        }
+    })),
+    // Trigger: Complete Tour Step
+    on(userActions.triggerCompleteTourStep, state => ({
+        ...state,
+        triggers: {
+            ...state.triggers,
+            tour: {
+                action: userActions.triggerCompleteTourStep.type,
+                pending: true,
+                error: undefined,
+                success: undefined,
+                successMsg: undefined
+            }
+        }
+    })),
+    on(userActions.triggerCompleteTourStepFailure, (state, { error }) => ({
+        ...state,
+        triggers: {
+            ...state.triggers,
+            tour: {
+                pending: false,
+                error
+            }
+        }
+    })),
+    on(userActions.triggerLoadStatusCompleteTourStepSuccess, (state, { triggerStatus }) => ({
+        ...state,
+        triggers: {
+            ...state.triggers,
+            tour: {
+                ...triggerStatus
+            }
+        }
+    }))
 );
 
 export function reducer(state: UserStateDetails | undefined, action: Action) {

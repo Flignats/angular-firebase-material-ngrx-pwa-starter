@@ -1,0 +1,37 @@
+<div class="user-resources">
+    <div class="user-resource">
+        <mat-icon>people</mat-icon>
+        <div>
+            <div>{{ userResources.population.available | number }} / {{ userResources.population.available + userResources.population.unavailable | number }}</div>
+            <div>population</div>
+        </div>
+    </div>
+    <div class="user-resource">
+        <mat-icon>reorder</mat-icon>
+        <div>
+            <div>{{ userResources.sand | number }}</div>
+            <div>sand</div>
+        </div>
+    </div>
+    <div class="user-resource">
+        <mat-icon>blur_on</mat-icon>
+        <div>
+            <div>{{ userResources.stone | number }}</div>
+            <div>stone</div>
+        </div>
+    </div>
+    <div class="user-resource">
+        <mat-icon>waves</mat-icon>
+        <div>
+            <div>{{ userResources.water | number }}</div>
+            <div>water</div>
+        </div>
+    </div>
+    <div class="user-resource">
+        <mat-icon>nature</mat-icon>
+        <div>
+            <div>{{ userResources.wood | number }}</div>
+            <div>wood</div>
+        </div>
+    </div>
+</div>
