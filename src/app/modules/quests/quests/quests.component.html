@@ -1,4 +1,6 @@
 <app-quest-card
     *ngFor="let quest of (userQuests$ | async)?.quests | keyvalue"
     [quest]="quest"
+    [triggers]="(triggers$ | async)"
+    (completeQuest)="onCompleteQuest($event)"
 ></app-quest-card>

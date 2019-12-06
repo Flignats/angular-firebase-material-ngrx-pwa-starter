@@ -48,6 +48,8 @@ export const defaultQuests = {
         isReadyToCollect: false,
         category: 'city',
         completed: false,
+        description: 'Get started by building your first house.',
+        headline: 'Build 1 House',
         requirements: {
             buildings: { house: { level: 1, quantity: 1 } }
         },
@@ -59,6 +61,8 @@ export const defaultQuests = {
         isReadyToCollect: false,
         category: 'city',
         completed: false,
+        description: 'Build a level 3 house.',
+        headline: 'Upgrading Houses',
         requirements: {
             buildings: { house: { level: 3, quantity: 1 } }
         },
@@ -70,6 +74,8 @@ export const defaultQuests = {
         isReadyToCollect: false,
         category: 'city',
         completed: false,
+        description: 'Have 3 houses in your town.',
+        headline: '3 Houses',
         requirements: {
             buildings: { house: { quantity: 3 } }
         },
