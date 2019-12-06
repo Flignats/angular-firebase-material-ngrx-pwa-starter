@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { selectUser, UserState } from './user.state';
-import { IUser } from './user.model';
+import { IUser } from '@shared-data/models/user.model';
 
 export const selectUserAccount = createSelector(
     selectUser,

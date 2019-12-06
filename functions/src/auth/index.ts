@@ -1,6 +1,6 @@
-import { defaultQuests } from '../models/game-data/user-quests.model';
 import * as admin from 'firebase-admin';
 import * as utils from '../utils';
+import { defaultQuests } from '@shared-data/models/user-quests.model';
 
 const firestoreInstance = admin.firestore();
 

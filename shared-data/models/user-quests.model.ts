@@ -1,4 +1,6 @@
 import { BuildingIds } from './buildings.models';
+import { Timestamp } from '@firebase/firestore-types';
+import { IUserResources } from './user.model';
 
 export interface IQuestDetails {
     id: string;
@@ -13,13 +15,14 @@ export interface IQuestDetails {
             };
         };
     };
-    resources: any;
+    resources: Partial<IUserResources>;
+    unlocksLand?: boolean;
 }
 
 export interface IUserQuests {
-    createdAt: any;
+    createdAt: Timestamp;
     uid: string;
-    updatedAt: any;
+    updatedAt: Timestamp;
     questsCompleted: number;
     quests: {
         house_a: IQuestDetails;             // Build: House
@@ -37,13 +40,16 @@ export interface IUserQuests {
     };
 }
 
-// Model in App also needs to be updated
+// Model in Cloud Functions also needs to be updated
+// View details are in Quests Module > components
 export const defaultQuests = {
     house_a: {
         id: 'house_a',
         isReadyToCollect: false,
         category: 'city',
         completed: false,
+        description: 'Get started by building your first house.',
+        headline: 'Build 1 House',
         requirements: {
             buildings: { house: { level: 1, quantity: 1 } }
         },
@@ -55,16 +61,21 @@ export const defaultQuests = {
         isReadyToCollect: false,
         category: 'city',
         completed: false,
+        description: 'Build a level 3 house.',
+        headline: 'Upgrading Houses',
         requirements: {
             buildings: { house: { level: 3, quantity: 1 } }
         },
-        resources: { sand: 500, stone: 2000, water: 500, wood: 500 }
+        resources: { sand: 500, stone: 2000, water: 500, wood: 500 },
+        unlocksLand: true,
     },
     house_c: {
         id: 'house_c',
         isReadyToCollect: false,
         category: 'city',
         completed: false,
+        description: 'Have 3 houses in your town.',
+        headline: '3 Houses',
         requirements: {
             buildings: { house: { quantity: 3 } }
         },

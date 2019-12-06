@@ -192,7 +192,7 @@ export const defaultBuildings: IBuildings = {
         j: createBuildingDetails(59588, 10, 100, 51200, 307200, 128000, 1024000)
     },
     barracks: {
-        a: createBuildingDetails(30, 1, 150, 50, 150, 50, 400),
+        a: createBuildingDetails(300, 1, 100, 250, 1200, 500, 1500),
         b: createBuildingDetails(607, 2, 100, 500, 2400, 1000, 3000),
         c: createBuildingDetails(1230, 3, 100, 1000, 4800, 2000, 6000),
         d: createBuildingDetails(2491, 4, 100, 2000, 9600, 4000, 12000),
@@ -229,15 +229,15 @@ export const defaultBuildings: IBuildings = {
     },
     house: {
         a: createBuildingDetails(30, 1, 25, 100, 50, 100, 500),
-        b: createBuildingDetails(72, 2, 100, 200, 100, 200, 1000),
-        c: createBuildingDetails(148, 3, 100, 400, 200, 400, 2000),
-        d: createBuildingDetails(320, 4, 100, 800, 400, 800, 4000),
-        e: createBuildingDetails(690, 5, 100, 1600, 800, 1600, 8000),
-        f: createBuildingDetails(1396, 6, 100, 3200, 1600, 3200, 16000),
-        g: createBuildingDetails(2827, 7, 100, 6400, 3200, 6400, 32000),
-        h: createBuildingDetails(5718, 8, 100, 12800, 6400, 12800, 64000),
-        i: createBuildingDetails(8256, 9, 100, 25600, 12800, 25600, 128000),
-        j: createBuildingDetails(17520, 10, 100, 51200, 25600, 51200, 256000)
+        b: createBuildingDetails(20, 2, 100, 200, 100, 200, 1000),
+        c: createBuildingDetails(41, 3, 100, 400, 200, 400, 2000),
+        d: createBuildingDetails(83, 4, 100, 800, 400, 800, 4000),
+        e: createBuildingDetails(168, 5, 100, 1600, 800, 1600, 8000),
+        f: createBuildingDetails(340, 6, 100, 3200, 1600, 3200, 16000),
+        g: createBuildingDetails(690, 7, 100, 6400, 3200, 6400, 32000),
+        h: createBuildingDetails(1396, 8, 100, 12800, 6400, 12800, 64000),
+        i: createBuildingDetails(2827, 9, 100, 25600, 12800, 25600, 128000),
+        j: createBuildingDetails(5718, 10, 100, 51200, 25600, 51200, 256000)
     },
     keep: {
         a: createBuildingDetails(5, 1, 100, 100, 50, 100, 500),

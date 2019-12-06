@@ -1,15 +1,21 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "outDir": "lib",
-    "sourceMap": true,
-    "strict": true,
-    "target": "es2017"
-  },
-  "compileOnSave": true,
-  "include": [
-    "src"
-  ],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "module": "commonjs",
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "outDir": "lib",
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2017",
+        "paths": {
+            "@shared-data/*": [
+                "../shared-data/*"
+            ]
+        },
+    },
+    "compileOnSave": true,
+    "include": [
+        "src"
+    ],
 }

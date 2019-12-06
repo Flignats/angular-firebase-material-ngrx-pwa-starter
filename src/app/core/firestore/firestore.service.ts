@@ -1,5 +1,4 @@
-import { IUserQuests } from '@app/core/models/game-data/user-quests.model';
-import { IUser } from './../../modules/user/user.model';
+import { IUserQuests } from '@shared-data/models/user-quests.model';
 import { Injectable } from '@angular/core';
 import {
     AngularFirestore,
@@ -15,6 +14,7 @@ import { map } from 'rxjs/operators';
 
 import * as firebase from 'firebase/app';
 import { IBuildings } from '@app/modules/home/home.model';
+import { IUser } from '@shared-data/models/user.model';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;

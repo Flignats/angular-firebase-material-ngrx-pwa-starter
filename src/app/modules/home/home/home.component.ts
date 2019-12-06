@@ -3,13 +3,13 @@ import { Observable } from 'rxjs';
 import { UserFacade } from '@app/modules/user/user.facade';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CoreFacade } from '@app/core/facades/core.facade';
-import { IUser } from '@app/modules/user/user.model';
 import { IBuildings } from '../home.model';
 import { MatDialog } from '@angular/material/dialog';
 import { BuildModalComponent } from '../modals/build/build-modal.component';
 import { BonusCollectModalComponent } from '@app/shared/modals/bonus-collect/bonus-collect.component';
 import { BasicModalComponent } from '@app/shared/modals/basic/basic.component';
 import { Router } from '@angular/router';
+import { IUser } from '@shared-data/models/user.model';
 
 @Component({
     selector: 'app-home',

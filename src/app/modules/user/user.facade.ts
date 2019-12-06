@@ -1,9 +1,10 @@
-import { IUser, IUserTriggers } from './user.model';
+import { IUserTriggers } from './user.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { loadUser, triggerSetDisplayName, triggerBuild, triggerCompleteTourStep } from '@app/modules/user/user.actions';
 import { selectUserAccount, selectUserLoading, selectUserTriggers } from '@app/modules/user/user.selectors';
+import { IUser } from '@shared-data/models/user.model';
 
 @Injectable({
     providedIn: 'root'

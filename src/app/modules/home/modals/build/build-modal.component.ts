@@ -1,6 +1,6 @@
-import { defaultBuildings } from '@app/core/models/game-data/buildings.models';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { defaultBuildings } from '@shared-data/models/buildings.models';
 
 @Component({
     selector: 'app-build',

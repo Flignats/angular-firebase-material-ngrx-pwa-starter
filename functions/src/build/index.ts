@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 import * as utils from '../utils';
-import { defaultBuildings } from '../models/game-data/buildings.models';
+import { defaultBuildings } from '@shared-data/models/buildings.models';
 const firestoreInstance = admin.firestore();
 
 export async function onCompleteBuild(data: any) {

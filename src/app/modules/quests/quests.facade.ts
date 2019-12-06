@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { loadUserQuests, completeQuest } from './quests.actions';
-import { IUserQuests } from '@app/core/models/game-data/user-quests.model';
+import { IUserQuests } from '@shared-data/models/user-quests.model';
 import { selectUserQuests, selectQuestsLoading, selectQuestsTriggers } from './quests.selectors';
 import { IQuestTriggers } from './quests.model';
 

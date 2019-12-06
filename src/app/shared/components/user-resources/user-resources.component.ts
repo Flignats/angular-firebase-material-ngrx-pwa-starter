@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IUserResources } from './../../../modules/user/user.model';
+import { IUserResources } from '@shared-data/models/user.model';
 
 @Component({
     selector: 'app-user-resources',

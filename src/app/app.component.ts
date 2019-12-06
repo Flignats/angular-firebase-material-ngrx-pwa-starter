@@ -1,10 +1,11 @@
 import { UserFacade } from '@app/modules/user/user.facade';
-import { IUser, IUserTriggers } from '@app/modules/user/user.model';
+import { IUserTriggers } from '@app/modules/user/user.model';
 import { CoreFacade } from '@app/core/facades/core.facade';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { IUser } from '@shared-data/models/user.model';
 
 @Component({
     selector: 'app-root',

@@ -1,6 +1,7 @@
-import { IUser, IUserTriggers } from './user.model';
+import { IUserTriggers } from './user.model';
 import { createAction, props } from '@ngrx/store';
 import { ITriggers } from '@app/core/models/triggers.models';
+import { IUser } from '@shared-data/models/user.model';
 
 export const loadUser = createAction('[User] Load User');
 export const loadUserFailure = createAction('[User] Load User => Failed', props<{ error: any }>());

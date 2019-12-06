@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
-import { IUser } from '@app/modules/user/user.model';
+import { IUser } from '@shared-data/models/user.model';
 
 @Component({
     selector: 'app-tour',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IUserQuests, defaultQuests } from '@app/core/models/game-data/user-quests.model';
+import { IUserQuests, defaultQuests } from '@shared-data/models/user-quests.model';
 
 @Component({
     selector: 'app-quest-card',
@@ -7,8 +7,9 @@ import { IUserQuests, defaultQuests } from '@app/core/models/game-data/user-ques
     styleUrls: ['./quest-card.component.scss']
 })
 export class QuestCardComponent implements OnInit {
-    // TODO: Update type
+    // TODO: Update types
     @Input() quest: any;
+    @Input() triggers: any;
 
     quests = defaultQuests;
 

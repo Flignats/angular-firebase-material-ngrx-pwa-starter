@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { defaultBuildings } from '@app/core/models/game-data/buildings.models';
+import { defaultBuildings } from '@shared-data/models/buildings.models';
 
 @Component({
     selector: 'app-world',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestsFacade } from '../quests.facade';
-import { IUserQuests } from '@app/core/models/game-data/user-quests.model';
+import { IUserQuests } from '@shared-data/models/user-quests.model';
 import { Observable } from 'rxjs';
 import { IQuestTriggers } from '../quests.model';
 

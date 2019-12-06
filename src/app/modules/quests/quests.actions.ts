@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IUserQuests } from '@app/core/models/game-data/user-quests.model';
+import { IUserQuests } from '@shared-data/models/user-quests.model';
 
 export const loadUserQuests = createAction('[Quests] Load User Quests');
 export const loadUserQuestsFailure = createAction('[Quests] Load User Quests => Failed', props<{ error: any }>());
