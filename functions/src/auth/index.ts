@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 import * as utils from '../utils';
-import { defaultQuests } from '@shared-data/models/user-quests.model';
+import { defaultQuests } from '../../../shared-data/models/user-quests.model';
 
 const firestoreInstance = admin.firestore();
 
@@ -45,6 +45,10 @@ export async function onNewUserCreated(user: any, context: any) {
             createdAt: serverTimestamp,
             displayName: null,
             email: user.email,
+            level: {
+                number: 1,
+                experience: 0,
+            },
             resources: {
                 population: {
                     available: 100,
@@ -110,21 +114,34 @@ export async function onNewUserCreated(user: any, context: any) {
 
     batch.set(newUserBuildings, {
         createdAt: serverTimestamp,
-        hasCreatedFirstBuilding: false,
         uid: user.uid,
         updatedAt: serverTimestamp,
-        nodes: buildings
+        nodes: buildings,
+        unlocked: {
+            arsenal: false,
+            assembly: false,
+            barracks_resource: false,
+            barracks_ground: false,
+            barracks_ranged: false,
+            barracks_magic: false,
+            flight_tower: false,
+            furnace: false,
+            house: true,
+            keep: true,
+            think_tank: false,
+            warehouse: false,
+            watchtower: false,
+        },
+        hasCreatedFirstBuilding: false,
     });
 
     // User Quests Doc
     batch.set(newUserQuests, {
+        ...defaultQuests,
         createdAt: serverTimestamp,
-        quests: {
-            ...defaultQuests
-        },
         questsCompleted: 0,
         uid: user.uid,
-        updatedAt: serverTimestamp,
+        updatedAt: serverTimestamp
     });
 
     return batch.commit();

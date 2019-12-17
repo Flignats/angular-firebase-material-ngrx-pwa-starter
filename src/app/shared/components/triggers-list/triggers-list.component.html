@@ -17,7 +17,11 @@
 </app-trigger-status>
 
 <!-- Building -->
-<app-trigger-status [icon]="'build'" [defaultActionText]="'Add a Building Task'" [mode]="'determinate'">
+<!-- TODO: Create task status -->
+<app-trigger-status *ngIf="!tasks?.build" [icon]="'build'" [defaultActionText]="'Add a Building Task'" [mode]="'determinate'">
+</app-trigger-status>
+
+<app-trigger-status *ngIf="tasks?.build" [icon]="'build'" [actionText]="'Building...'" [mode]="'determinate'" [task]="tasks?.build">
 </app-trigger-status>
 
 <!-- Research -->

@@ -54,3 +54,17 @@ export async function onTriggerSetDisplayName(change: any, context: any) {
         return Promise.resolve();
     }
 }
+
+export async function updateUserExperience(exp: number, userDocRef: FirebaseFirestore.DocumentReference, ) {
+    try {
+        return userDocRef.set({
+            level: {
+                number: 1,
+                experience: admin.firestore.FieldValue.increment(exp),
+            },
+        }, { merge: true });
+    } catch (error) {
+        console.log(error);
+        return Promise.resolve();
+    }
+}

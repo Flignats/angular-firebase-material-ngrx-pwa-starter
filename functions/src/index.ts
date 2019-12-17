@@ -5,6 +5,7 @@ import * as authFunctions from './auth';
 // import * as bonusCollectFunctions from './bonus_collect';
 import * as buildFunctions from './build';
 import * as buildingsFunctions from './buildings';
+import * as questsFunctions from './quests';
 import * as taskRunnerFunctions from './task-runners';
 import * as userFunctions from './user';
 import * as tourFunctions from './tour';
@@ -30,6 +31,11 @@ export const onTriggerBuild = functions.firestore.document('users/{userId}/trigg
 });
 export const onTriggerSetDisplayName = functions.firestore.document('users/{userId}/triggers/setDisplayName').onWrite((change, context) => {
     return userFunctions.onTriggerSetDisplayName(change, context);
+});
+
+// User: Quests
+export const onTriggerCompleteQuest = functions.firestore.document('users/{userId}/triggers/completeQuest').onWrite((change, context) => {
+    return questsFunctions.onTriggerCompleteQuest(change, context);
 });
 
 // Private Triggers

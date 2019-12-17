@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { defaultBuildings } from '@shared-data/models/buildings.models';
 
@@ -9,7 +9,7 @@ import { defaultBuildings } from '@shared-data/models/buildings.models';
 })
 export class BuildModalComponent implements OnInit {
     buildings: any;
-    payload: { data: any; submit: any; } = { data: undefined, submit: undefined };
+    payload: { data: any; submit: any } = { data: undefined, submit: undefined };
     selections = {
         arsenal: {
             active: false,
@@ -20,8 +20,7 @@ export class BuildModalComponent implements OnInit {
         },
         assembly: {
             active: false,
-            description:
-                'The Assembly Point provides the ability to send additional / higher troop count marches.',
+            description: 'The Assembly Point provides the ability to send additional / higher troop count marches.',
             id: 'assembly',
             title: 'Assembly Point'
         },
@@ -44,7 +43,7 @@ export class BuildModalComponent implements OnInit {
             description:
                 // tslint:disable-next-line: max-line-length
                 'Barracks provide training to turn your population into productive units. Resource barracks specialize in training Resource Troops.',
-            id: 'barracks',
+            id: 'barracks_resource',
             title: 'Barracks: Resource'
         },
         barracks_soldier: {
@@ -52,7 +51,7 @@ export class BuildModalComponent implements OnInit {
             description:
                 // tslint:disable-next-line: max-line-length
                 'Barracks provide training to turn your population into productive units. Ground barracks specialize in training Ground Troops.',
-            id: 'barracks',
+            id: 'barracks_ground',
             title: 'Barracks: Ground'
         },
         barracks_archer: {
@@ -60,7 +59,7 @@ export class BuildModalComponent implements OnInit {
             description:
                 // tslint:disable-next-line: max-line-length
                 'Barracks provide training to turn your population into productive units. Ranged barracks specialize in training Ranged Troops.',
-            id: 'barracks',
+            id: 'barracks_ranged',
             title: 'Barracks: Ranged'
         },
         barracks_magic: {
@@ -68,7 +67,7 @@ export class BuildModalComponent implements OnInit {
             description:
                 // tslint:disable-next-line: max-line-length
                 'Barracks provide training to turn your population into productive units. Magic barracks specialize in training Magic Troops.',
-            id: 'barracks',
+            id: 'barracks_magic',
             title: 'Barracks: Magic'
         },
         // pet: {
@@ -114,10 +113,8 @@ export class BuildModalComponent implements OnInit {
     };
     selected = undefined;
 
-    constructor(
-        public dialogRef: MatDialogRef<BuildModalComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any
-    ) {}
+
+    constructor(public dialogRef: MatDialogRef<BuildModalComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
     ngOnInit() {
         this.buildings = defaultBuildings;
@@ -142,5 +139,13 @@ export class BuildModalComponent implements OnInit {
             id: 'building_new',
             node: this.data.node
         };
+    }
+
+    public classStyler(building) {
+        const classes = {
+            ['cell--locked']: false,
+        };
+
+        return classes;
     }
 }

@@ -35,13 +35,13 @@ export class HomeComponent implements OnInit {
     }
 
     // Used to open from building cell
-    public onModalOpen(node) {
+    public onModalOpen(modalData) {
         const options = {
             width: 'auto',
             data: undefined
         };
-        if (node.status === 'empty') {
-            options.data = { name: 'MODAL NAME', animal: 'ANIMAL!', node: node.node };
+        if (modalData.node.status === 'empty') {
+            options.data = { name: 'MODAL NAME', buildingsUnlocked: modalData.buildingsUnlocked, node: modalData.node.node };
             this.openModal(BuildModalComponent, options);
         }
     }

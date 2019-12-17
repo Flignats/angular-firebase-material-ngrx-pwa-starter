@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 import * as utils from '../utils';
-import { defaultBuildings } from '@shared-data/models/buildings.models';
+import { defaultBuildings } from '../../../shared-data/models/buildings.models';
 
 const firestoreInstance = admin.firestore();
 

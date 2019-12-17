@@ -86,6 +86,34 @@ export class FirestoreService {
         return this.doc$('userQuests/' + uid);
     }
 
+    public getTriggerStatusCompleteQuest(uid) {
+        return this.doc$('users/' + uid + '/triggersStatus/completeQuest');
+    }
+    public triggerCompleteQuest(questId: string, uid: string) {
+        const batch                 = firebase.firestore().batch();
+        const timestamp             = this.timestamp;
+
+        const triggerDocRef         = firebase.firestore().doc('users/' + uid + '/triggers/completeQuest');
+        const triggerStatusDocRef   = firebase.firestore().doc('users/' + uid + '/triggersStatus/completeQuest');
+
+        batch.set(triggerDocRef, {
+            action: 'Completing quest...',
+            questId,
+            createdAt: timestamp,
+            uid,
+        });
+
+        batch.set(triggerStatusDocRef, {
+            action: 'Completing quest...',
+            questId,
+            createdAt: timestamp,
+            uid,
+            pending: true,
+        });
+
+        return from(batch.commit());
+    }
+
     // User
     public loadUser(uid: any): Observable<IUser> {
         return this.doc$('users/' + uid);

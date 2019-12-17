@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IUserQuests, defaultQuests } from '@shared-data/models/user-quests.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { defaultQuests, IQuestDetails, IUserQuests } from '@shared-data/models/user-quests.model';
+import { IQuestTriggers } from '../quests.model';
 
 @Component({
     selector: 'app-quest-card',
@@ -7,13 +8,20 @@ import { IUserQuests, defaultQuests } from '@shared-data/models/user-quests.mode
     styleUrls: ['./quest-card.component.scss']
 })
 export class QuestCardComponent implements OnInit {
-    // TODO: Update types
-    @Input() quest: any;
-    @Input() triggers: any;
+    @Input() quest: { key: string; value: IQuestDetails };
+    @Input() triggers: IQuestTriggers;
 
-    quests = defaultQuests;
+    @Output() completeQuest = new EventEmitter<string>();
+
+    public quests: Partial<IUserQuests>;
 
     constructor() {}
 
-    ngOnInit() {}
+    public ngOnInit() {
+        this.quests = defaultQuests;
+    }
+
+    public onCompleteQuest(questId) {
+        this.completeQuest.emit(questId);
+    }
 }

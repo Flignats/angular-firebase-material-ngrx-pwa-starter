@@ -1,35 +1,37 @@
-<mat-card class="quest">
-    <div class="mat-card-overlay"></div>
-    <mat-card-header>
-        <mat-card-title class="color-accent">{{ quest.value.headline }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        
-        <p>{{ quest.value.description }}</p>
-        <div class="unlock-house" *ngIf="quest.value.unlocksLand">
-            <mat-icon>lock</mat-icon>
-            <i>Unlocks (1) land plot</i>
-        </div>
-        <ul class="quest-resources">
-            <li class="resource">
-                <mat-icon class="color-accent">reorder</mat-icon>
-                <div>{{ quest.value.resources.sand }}</div>
-            </li>
-            <li class="resource">
-                <mat-icon class="color-accent">blur_on</mat-icon>
-                <div>{{ quest.value.resources.stone }}</div>
-            </li>
-            <li class="resource">
-                <mat-icon class="color-accent">waves</mat-icon>
-                <div>{{ quest.value.resources.water }}</div>
-            </li>
-            <li class="resource">
-                <mat-icon class="color-accent">nature</mat-icon>
-                <div>{{ quest.value.resources.wood }}</div>
-            </li>
-        </ul>
-    </mat-card-content>
-    <mat-card-actions>
-        <button *ngIf="quest.value.isReadyToCollect" mat-flat-button color="accent">Collect</button>
-    </mat-card-actions>
-</mat-card>
+<ng-container *ngIf="quests.quests[quest.key]">
+    <mat-card class="quest">
+        <div class="mat-card-overlay"></div>
+        <mat-card-header>
+            <mat-card-title class="color-accent">{{ quests.quests[quest.key].headline }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>        
+            <p>{{ quests.quests[quest.key].description }}</p>
+            <div class="unlock-house" *ngIf="quests.quests[quest.key].unlocksLand">
+                <mat-icon>lock</mat-icon>
+                <i>Unlocks (1) land plot</i>
+            </div>
+            <ul class="quest-resources">
+                <li class="resource">
+                    <mat-icon class="color-accent">reorder</mat-icon>
+                    <div>{{ quests.quests[quest.key].resources.sand }}</div>
+                </li>
+                <li class="resource">
+                    <mat-icon class="color-accent">blur_on</mat-icon>
+                    <div>{{ quests.quests[quest.key].resources.stone }}</div>
+                </li>
+                <li class="resource">
+                    <mat-icon class="color-accent">waves</mat-icon>
+                    <div>{{ quests.quests[quest.key].resources.water }}</div>
+                </li>
+                <li class="resource">
+                    <mat-icon class="color-accent">nature</mat-icon>
+                    <div>{{ quests.quests[quest.key].resources.wood }}</div>
+                </li>
+            </ul>
+        </mat-card-content>
+        <mat-card-actions>
+            <button *ngIf="!quest.value.completed" mat-raised-button color="accent" (click)="onCompleteQuest(quest.key)">Complete</button>
+            <mat-icon *ngIf="quest.value.completed" color="accent">done_outline</mat-icon>
+        </mat-card-actions>
+    </mat-card>
+</ng-container>

@@ -1,8 +1,9 @@
 <div class="user-task">
     <mat-icon>{{ icon }}</mat-icon>
     <div>
-        <div>{{ defaultActionText }}</div>
-        <mat-progress-bar *ngIf="!trigger" [mode]="mode" value="100" color="accent"></mat-progress-bar>
-        <mat-progress-bar *ngIf="trigger" [mode]="mode" color="accent"></mat-progress-bar>
+        <div>{{ defaultActionText || actionText }}</div>
+        <mat-progress-bar *ngIf="!trigger?.pending && !task?.active" [mode]="mode" value="100" color="accent"></mat-progress-bar>
+        <mat-progress-bar *ngIf="task && task.startedAt && task.completesAt" [mode]="mode" color="accent" [value]="progressValue"></mat-progress-bar>
     </div>
+    <button (click)="logThis(trigger)">Log</button>
 </div>

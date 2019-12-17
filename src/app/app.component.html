@@ -36,7 +36,7 @@
                     </div>
                     <!-- Task Component -->
                     <div class="sidebar__user-tasks">
-                        <app-triggers-list [triggers]="(userTriggers$ | async)"></app-triggers-list>
+                        <app-triggers-list [triggers]="(userTriggers$ | async)" [tasks]="(user$ | async)?.tasks"></app-triggers-list>
                     </div>
                     <!-- Tabs -->
                     <!-- Resources Component -->

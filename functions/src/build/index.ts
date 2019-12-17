@@ -1,6 +1,7 @@
 import * as admin from 'firebase-admin';
 import * as utils from '../utils';
-import { defaultBuildings } from '@shared-data/models/buildings.models';
+import * as userFunctions from '../user';
+import { defaultBuildings } from '../../../shared-data/models/buildings.models';
 const firestoreInstance = admin.firestore();
 
 export async function onCompleteBuild(data: any) {
@@ -16,12 +17,12 @@ export async function onCompleteBuild(data: any) {
     const userCityDoc = firestoreInstance.doc(utils.API_URLS.userCity(uid));
     const userQuestDoc = firestoreInstance.doc(utils.API_URLS.userQuest(uid));
 
-    // Update user city
-
-    // Update user quest
     const batch = firestoreInstance.batch();
 
     // Update User population, task:build
+    const newLevelId = utils.toLetters(newBuilding.level).toLowerCase();
+    const experienceGained = defaultBuildings[buildingId][newLevelId]['expGain'];
+
     batch.update(userDoc, {
         ['resources.population.available']: admin.firestore.FieldValue.increment(newBuilding.people),
         ['resources.population.unavailable']: admin.firestore.FieldValue.increment(-newBuilding.people),
@@ -38,16 +39,17 @@ export async function onCompleteBuild(data: any) {
             level: newBuilding.level,
             node,
             status: 'occupied'
-        }
+        },
+        ['unlocked.barracks_resource']: true
     });
 
-    const result = await batch.commit();
+    const result = await batch.commit().then(async _ => await userFunctions.updateUserExperience(experienceGained, userDoc));
     if (!result) { return Promise.reject('Batch did not execute properly'); }
     
     // Quests
-    // Quest:house_a - Complete the User's first quest
+    // Quest:house_a - Set the User's first quest to isReadyToCollect
+    // User: unlock barracks_resources
     if (!hasCreatedFirstBuilding) {
-        console.log('has not created first building');
         const questBatch = firestoreInstance.batch();
 
         questBatch.update(userDoc, {

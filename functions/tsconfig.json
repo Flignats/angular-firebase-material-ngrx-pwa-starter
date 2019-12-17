@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
+        "baseUrl": "./",
         "module": "commonjs",
         "noImplicitReturns": true,
         "noUnusedLocals": true,

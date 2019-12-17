@@ -5,6 +5,10 @@ export interface IUser {
     displayName: string;
     email: string;
     fcmTokens?: { [token: string]: true };
+    level: {
+        number: number;
+        experience: number;
+    };
     resources: IUserResources;
     shield: {
         active: boolean;
@@ -29,24 +33,16 @@ export interface IUserResources {
 }
 
 export interface IUserTasks {
-    build: {
-        action: string;
-        active: boolean;
-        completesAt: Timestamp;
-        startedAt: Timestamp;
-    };
-    research: {
-        action: string;
-        active: boolean;
-        completesAt: Timestamp;
-        startedAt: Timestamp;
-    };
-    train: {
-        action: string;
-        active: boolean;
-        completesAt: Timestamp;
-        startedAt: Timestamp;
-    };
+    build: IUserTaskDetails;
+    research: IUserTaskDetails;
+    train: IUserTaskDetails;
+}
+
+export interface IUserTaskDetails {
+    action: string;
+    active: boolean;
+    completesAt: Timestamp;
+    startedAt: Timestamp;
 }
 
 export interface IUserTours {

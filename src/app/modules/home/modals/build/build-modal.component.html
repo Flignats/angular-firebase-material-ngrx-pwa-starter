@@ -4,28 +4,28 @@
         <div class="cell" [ngClass]="{'selected': selections.house.active}" (click)="onSelectBuilding('house')">
             <span class="sprite sprite-main icon_house"></span>
         </div>
-        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_worker.active}"
+        <div class="cell" [ngClass]="{'selected': selections.barracks_worker.active, 'cell--locked': !data.buildingsUnlocked.barracks_resource}"
             (click)="onSelectBuilding('barracks_worker')">
             <span class="cell-lock">
                 <mat-icon>lock</mat-icon>
             </span>
             <span class="sprite sprite-main icon_barracks_worker"></span>
         </div>
-        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_soldier.active}"
+        <div class="cell" [ngClass]="{'selected': selections.barracks_soldier.active, 'cell--locked': !data.buildingsUnlocked.barracks_ground}"
             (click)="onSelectBuilding('barracks_soldier')">
             <span class="cell-lock">
                 <mat-icon>lock</mat-icon>
             </span>
             <span class="sprite sprite-main icon_barracks_swords"></span>
         </div>
-        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_archer.active}"
+        <div class="cell" [ngClass]="{'selected': selections.barracks_archer.active, 'cell--locked': !data.buildingsUnlocked.barracks_ranged}"
             (click)="onSelectBuilding('barracks_archer')">
             <span class="cell-lock">
                 <mat-icon>lock</mat-icon>
             </span>
             <span class="sprite sprite-main icon_barracks_ranged"></span>
         </div>
-        <div class="cell cell--locked" [ngClass]="{'selected': selections.barracks_magic.active}"
+        <div class="cell" [ngClass]="{'selected': selections.barracks_magic.active, 'cell--locked': !data.buildingsUnlocked.barracks_magic}"
             (click)="onSelectBuilding('barracks_magic')">
             <span class="cell-lock">
                 <mat-icon>lock</mat-icon>
